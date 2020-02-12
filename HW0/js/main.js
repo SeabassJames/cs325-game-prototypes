@@ -14,9 +14,8 @@ window.onload = function() {
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
-    game.load.spritesheet('dude', 'assets/games/starstruck/dude.png', 32, 48);
-    game.load.image('background', 'assets/games/starstruck/background2.png');
+    game.load.image('background', 'assets/background.png');
+    game.load.spritesheet('dude', 'assets/MagnetPantsManSprites.png', 400,650);
 
 }
 
