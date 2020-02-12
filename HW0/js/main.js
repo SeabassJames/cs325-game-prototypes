@@ -10,6 +10,7 @@ window.onload = function() {
     // loading functions to reflect where you are putting the assets.
     // All loading functions will typically all be found inside "preload()".
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
+    //https://www.html5gamedevs.com/topic/13932-problem-with-arcade-bodysetsize/
   
 var game = new Phaser.Game(2750, 1500, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
@@ -36,7 +37,7 @@ function create() {
 
     game.physics.arcade.gravity.y = 250;
 
-    player = game.add.sprite(100, 167, 'dude');
+    player = game.add.sprite(100, 163, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
     player.body.bounce.y = 0.2;
