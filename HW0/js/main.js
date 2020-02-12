@@ -11,11 +11,11 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
   
-var game = new Phaser.Game(4500, 3000, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(2750, 1500, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
     game.load.image('background', 'assets/Background.png');
-    game.load.spritesheet('dude', 'assets/MagnetPantsManSprites.png', 200,325);
+    game.load.spritesheet('dude', 'assets/MagnetPantsManSprites.png', 100,167);
 
 }
 
