@@ -32,7 +32,7 @@ function create() {
 
     game.time.desiredFps = 30;
 
-    bg = game.add.tileSprite(0, 0, 4500, 3000, 'background');
+    bg = game.add.tileSprite(0, 0, 2750, 1500, 'background');
 
     game.physics.arcade.gravity.y = 250;
 
