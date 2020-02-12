@@ -44,7 +44,7 @@ function create() {
     player.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
 
-    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('left', [3, 2, 1, 0], 10, true);
     player.animations.add('turn', [4], 20, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 
