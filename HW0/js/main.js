@@ -20,6 +20,10 @@ function preload() {
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
     game.load.image('ground', 'assets/Grass.png');
+    game.load.image('plaform', 'assets/Platform.png');
+    game.load.image('wall', 'assets/Wall.png');
+    game.load.image('goal', 'assets/Goal.png');
+    game.load.image('win', 'assets/WinScreen.png');
 }
 console.log("vars");
 var player;
@@ -46,6 +50,9 @@ function create() {
     ground.body.gravityScale = 0;
     ground.body.collideWorldBounds = true;
     
+    console.log("wall");
+    var leftWall = platforms.create(0, 0, 'wall');
+    
 
     game.physics.arcade.gravity.y = 250;
     console.log("player");
@@ -68,7 +75,9 @@ function create() {
 function update() {
 
     game.physics.arcade.collide(player, ground);
+    game.physics.arcade.collide(player, platforms);
 
+    
     player.body.velocity.x = 0;
 
     if (cursors.left.isDown)
