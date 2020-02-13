@@ -48,6 +48,9 @@ function create() {
     
     //generate background
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
+    //create goal
+    goal = game.add.sprite(200, 0, 'goal');
+    goal.scale.setTo(0.5, 0.1);
     
     platforms = game.add.physicsGroup();
     
@@ -72,9 +75,7 @@ function create() {
     player = game.add.sprite(100, 300, 'dude');
     game.physics.arcade.enable(player);
 
-    //create goal
-    goal = game.add.sprite(200, 0, 'goal');
-    goal.scale.setTo(0.5, 0.1);
+    
     
     player.body.collideWorldBounds = true;
     //leftWall.body.collideWorldBounds = true;
