@@ -68,7 +68,6 @@ function create() {
     //platforms.setAll('body.immovable', true);
     
     //create player
-    console.log("player");
     player = game.add.sprite(100, 200, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
@@ -179,7 +178,7 @@ function render () {
     // game.debug.text(game.time.physicsElapsed, 32, 32);
      game.debug.body(player);
      game.debug.bodyInfo(player, 16, 24);
-     game.debug.body(leftWall);
+     //game.debug.body(leftWall);
 }
 
     
