@@ -44,6 +44,8 @@ function create() {
     game.physics.arcade.enable(ground);
     ground.body.immovable = true;
     ground.body.gravityScale = 0;
+    ground.body.collideWorldBounds = true;
+    
 
     game.physics.arcade.gravity.y = 250;
     console.log("player");
