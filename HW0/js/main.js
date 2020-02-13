@@ -95,7 +95,7 @@ function update() {
     game.physics.arcade.collide(player, leftWall, onLeftWall = true);
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(leftWall, platforms);
-    game.physics.arcade.collide(leftWall, ground);
+    //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
     //clinging to left wall
