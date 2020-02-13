@@ -76,9 +76,10 @@ function create() {
     player.body.collideWorldBounds = true;
     //leftWall.body.collideWorldBounds = true;
     ground.body.collideWorldBounds = true;
-    player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
+    player.body.setSize(player.width / player.scale.x, player.height / player.scale.y);
+    leftWall.body.setSize(leftWall.width / leftWall.scale.x, leftWall.height / leftWall.scale.y);
     //platforms.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
-    //ground.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
+    ground.body.setSize(ground.width / ground.scale.x, ground.height / ground.scale.y);
 
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('turn', [4], 20, true);
