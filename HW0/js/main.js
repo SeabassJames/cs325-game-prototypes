@@ -50,7 +50,7 @@ function create() {
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     //create goal
     goal = game.add.sprite(200, 0, 'goal');
-    goal.scale.setTo(0.5, 0.3);
+    goal.scale.setTo(0.5, 0.2);
     
     platforms = game.add.physicsGroup();
     
@@ -191,7 +191,7 @@ function render () {
 
      //game.debug.text(game.time.physicsElapsed, 32, 32);
      //game.debug.body(player);
-     //game.debug.bodyInfo(player, 16, 24);
+     game.debug.bodyInfo(player, 16, 24);
      //game.debug.body(leftWall);
 }
 
