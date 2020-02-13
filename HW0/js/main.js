@@ -50,7 +50,7 @@ function create() {
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     //create goal
     goal = game.add.sprite(200, 0, 'goal');
-    goal.scale.setTo(0.5, 0.1);
+    goal.scale.setTo(0.5, 0.3);
     
     platforms = game.add.physicsGroup();
     
