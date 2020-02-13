@@ -57,6 +57,7 @@ function create() {
     
     console.log("wall");
     var leftWall = platforms.create(0, 0, 'wall');
+    leftWall.scale.setTo(1, 0.5);
     game.physics.arcade.enable(ground);
     //leftWall.enableBody = true;
     //leftWall.body.immovable = true;
@@ -130,7 +131,7 @@ function update() {
         }
     }
     
-    if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer)
+    if (jumpButton.isDown && player.body.velocity.y == 0 && game.time.now > jumpTimer)
     {
         player.body.velocity.y = -250;
         jumpTimer = game.time.now + 750;
