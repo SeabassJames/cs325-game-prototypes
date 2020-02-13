@@ -35,7 +35,7 @@ var cursors;
 var jumpButton;
 var bg;
 var ground;
-var leftWall;
+//var leftWall;
 var platforms;
 var onLeftWall = false;
 
@@ -58,12 +58,12 @@ function create() {
     ground.body.gravityScale = 0;
     
     //create wall
-    var leftWall = platforms.create(0, 0, 'wall');
-    leftWall.scale.setTo(0.7, 0.8);
-    game.physics.arcade.enable(leftWall);
+    //var leftWall = platforms.create(0, 0, 'wall');
+    //leftWall.scale.setTo(0.7, 0.8);
+    //game.physics.arcade.enable(leftWall);
     //leftWall.enableBody = true;
-    leftWall.body.immovable = true;
-    leftWall.body.gravityScale = 0;
+    //leftWall.body.immovable = true;
+    //leftWall.body.gravityScale = 0;
     
     //platforms.setAll('body.immovable', true);
     
@@ -76,7 +76,7 @@ function create() {
     //leftWall.body.collideWorldBounds = true;
     ground.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x, player.height / player.scale.y);
-    leftWall.body.setSize(leftWall.width / leftWall.scale.x, leftWall.height / leftWall.scale.y);
+    //leftWall.body.setSize(leftWall.width / leftWall.scale.x, leftWall.height / leftWall.scale.y);
     //platforms.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
     ground.body.setSize(ground.width / ground.scale.x, ground.height / ground.scale.y);
 
@@ -92,12 +92,13 @@ function create() {
 function update() {
 
     game.physics.arcade.collide(player, ground);
-    game.physics.arcade.collide(player, leftWall, onLeftWall = true);
+    //game.physics.arcade.collide(player, leftWall, onLeftWall = true);
     game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(leftWall, platforms);
+    //game.physics.arcade.collide(leftWall, platforms);
     //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
+    if (player.touching.left 
     //clinging to left wall
     if (onLeftWall == true){
         facing = 'left'
@@ -119,6 +120,7 @@ function update() {
             player.body.velocity.x = 250;
             onLeftWall = false;
             facing = 'right';
+            player.animations.play('right');
         }
     }
     else if (cursors.left.isDown)
