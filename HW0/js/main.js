@@ -70,7 +70,6 @@ function create() {
     //player.body.bounce.y = 0.0;
     player.body.collideWorldBounds = true;
     ground.body.collideWorldBounds = true;
-    platforms.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
     platforms.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
     ground.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
