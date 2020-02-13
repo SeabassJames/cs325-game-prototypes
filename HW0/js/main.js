@@ -59,15 +59,15 @@ function create() {
     var leftWall = platforms.create(0, 0, 'wall');
     game.physics.arcade.enable(ground);
     //leftWall.enableBody = true;
-    leftWall.body.immovable = true;
-    leftWall.body.gravityScale = 0;
+    //leftWall.body.immovable = true;
+    //leftWall.body.gravityScale = 0;
     
     
     console.log("player");
     player = game.add.sprite(100, 200, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
-    player.body.bounce.y = 0.0;
+    //player.body.bounce.y = 0.0;
     player.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
 
