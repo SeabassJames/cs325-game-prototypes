@@ -34,11 +34,16 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.time.desiredFps = 30;
+    
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     platforms = game.add.group();
+    
     console.log("ground"); 
     var ground = platforms.create(0, 500, 1500, 100, 'ground');
+    game.physics.arcade.enable(ground);
+    ground.body.immovable = true;
+    ground.body.gravityScale = 0;
 
     game.physics.arcade.gravity.y = 250;
     console.log("player");
