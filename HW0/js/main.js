@@ -12,6 +12,7 @@ window.onload = function() {
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
     //https://www.html5gamedevs.com/topic/13932-problem-with-arcade-bodysetsize/
     //https://phaser.io/examples/v2/ninja-physics/ninja-platforms
+    //https://www.joshmorony.com/phaser-fundamentals-handling-collisions/
   
 var game = new Phaser.Game(1500, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
@@ -49,9 +50,9 @@ function create() {
     console.log("ground"); 
     ground = platforms.create(0, 500, 'ground');
     game.physics.arcade.enable(ground);
-    ground.body.immovable = true;
-    ground.body.gravityScale = 0;
-    ground.body.collideWorldBounds = true;
+    platforms.body.immovable = true;
+    platforms.body.gravityScale = 0;
+    platforms.body.collideWorldBounds = true;
     
     console.log("wall");
     leftWall = platforms.create(0, 0, 'wall');
@@ -79,7 +80,7 @@ function update() {
 
     game.physics.arcade.collide(player, ground);
     game.physics.arcade.collide(player, platforms);
-
+    game.physics.arcade.collide(player, leftWall);
     
     player.body.velocity.x = 0;
 
