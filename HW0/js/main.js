@@ -102,7 +102,7 @@ function update() {
     //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
-    if (player.x >= 150 && player.y <= 500){
+    if (player.x >= 150 && player.y <= 20){
         player.body.velocity.y = -1;
         var winner = game.add.sprite(50, 50, 'win');
         winner.scale.setTo(0.1, 0.1);
