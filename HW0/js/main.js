@@ -48,9 +48,6 @@ function create() {
     
     console.log("platforms");
     platforms = game.add.group();
-    game.physics.arcade.enable(platforms);
-    platforms.enableBody = true;
-    platforms.body.immovable = true;
     
     console.log("ground"); 
     ground = platforms.create(0, 500, 'ground');
@@ -74,7 +71,11 @@ function create() {
 
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
+    
+    console.log("platforms cont..");
+    game.physics.arcade.enable(platforms);
+    platforms.enableBody = true;
+    platforms.body.immovable = true;
 }
 
 function update() {
