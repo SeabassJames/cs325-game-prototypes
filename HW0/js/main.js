@@ -40,7 +40,7 @@ var leftWall;
 function create() {
     console.log("create");
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
+    game.physics.arcade.gravity.y = 250;
     game.time.desiredFps = 30;
     
     console.log("bg");
@@ -62,7 +62,7 @@ function create() {
     //leftWall.body.immovable = true;
     //leftWall.body.gravityScale = 0;
     
-    game.physics.arcade.gravity.y = 250;
+    
     console.log("player");
     player = game.add.sprite(100, 200, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
