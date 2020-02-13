@@ -38,6 +38,7 @@ var ground;
 var leftWall;
 var platforms;
 var onLeftWall = false;
+var goal;
 
 function create() {
     //
@@ -71,6 +72,9 @@ function create() {
     player = game.add.sprite(100, 300, 'dude');
     game.physics.arcade.enable(player);
 
+    //create goal
+    goal = game.add.sprite(200, 0, 'goal');
+    goal.scale.setTo(0.5, 0.5);
     
     player.body.collideWorldBounds = true;
     //leftWall.body.collideWorldBounds = true;
@@ -98,7 +102,12 @@ function update() {
     //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
-    if (player.x <= 50){
+    if (player.x >= 150 && player.y <= 500){
+        player.body.velocity.y = -1;
+        var winner = game.add.sprite(50, 50, 'win');
+    }
+    if (player.x <= 51){
+        player.x = 50;
         onLeftWall = true;
     }else{
         onLeftWall = false;
@@ -163,9 +172,6 @@ function update() {
             }
 
             facing = 'idle';
-        }
-        else{
-            player.frame = 4;
         }
     }
     
