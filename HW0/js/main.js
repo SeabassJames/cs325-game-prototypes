@@ -34,8 +34,8 @@ var cursors;
 var jumpButton;
 var bg;
 var ground;
-var platforms;
 var leftWall;
+var platforms;
 
 function create() {
     //
@@ -60,7 +60,7 @@ function create() {
     leftWall.scale.setTo(0.7, 0.8);
     game.physics.arcade.enable(ground);
     //leftWall.enableBody = true;
-    //leftWall.body.immovable = true;
+    leftWall.body.immovable = true;
     //leftWall.body.gravityScale = 0;
     
     //create player
