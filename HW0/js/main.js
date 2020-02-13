@@ -17,7 +17,7 @@ var game = new Phaser.Game(1500, 600, Phaser.CANVAS, 'game', { preload: preload,
 function preload() {
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
-    game.load.spritesheet('ground', 'assets/Grass.png', 2250, 100);
+    game.load.image('ground', 'assets/Grass.png');
 }
 
 var player;
