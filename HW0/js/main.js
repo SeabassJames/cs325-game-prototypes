@@ -45,14 +45,15 @@ function create() {
     
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
+    
+    console.log("platforms");
     platforms = game.add.group();
+    game.physics.arcade.enable(platforms);
+    platforms.enableBody = true;
+    platforms.body.immovable = true;
     
     console.log("ground"); 
     ground = platforms.create(0, 500, 'ground');
-    game.physics.arcade.enable(ground);
-    platforms.body.immovable = true;
-    platforms.body.gravityScale = 0;
-    platforms.body.collideWorldBounds = true;
     
     console.log("wall");
     leftWall = platforms.create(0, 0, 'wall');
