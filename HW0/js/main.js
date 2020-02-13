@@ -105,8 +105,10 @@ function update() {
     player.body.velocity.x = 0;
     if (player.x >= 150 && player.y <= 20){
         player.body.velocity.y = -1;
-        var winner = game.add.sprite(50, 50, 'win');
-        winner.scale.setTo(0.1, 0.1);
+        if (winner == null){
+            var winner = game.add.sprite(50, 50, 'win');
+            winner.scale.setTo(0.1, 0.1);
+        }
     }
     if (player.x <= 51){
         player.x = 50;
@@ -191,7 +193,7 @@ function render () {
 
      //game.debug.text(game.time.physicsElapsed, 32, 32);
      //game.debug.body(player);
-     game.debug.bodyInfo(player, 16, 24);
+     //game.debug.bodyInfo(player, 16, 24);
      //game.debug.body(leftWall);
 }
 
