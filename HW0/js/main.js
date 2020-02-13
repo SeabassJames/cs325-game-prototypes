@@ -101,6 +101,7 @@ function update() {
     player.body.velocity.x = 0;
     //clinging to left wall
     if (onLeftWall == true){
+        facing = 'left'
         player.body.velocity.y = 0;
         if (cursors.up.isDown){
             player.body.velocity.y = -100;
@@ -118,6 +119,7 @@ function update() {
             player.body.velocity.y = -200;
             player.body.velocity.x = 250;
             onLeftWall = false;
+            facing = 'right';
         }
     }
     else if (cursors.left.isDown)
@@ -156,6 +158,9 @@ function update() {
             }
 
             facing = 'idle';
+        }
+        else{
+            player.frame = 4;
         }
     }
     
