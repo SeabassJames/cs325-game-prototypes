@@ -12,7 +12,7 @@ window.onload = function() {
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
     //https://www.html5gamedevs.com/topic/13932-problem-with-arcade-bodysetsize/
   
-var game = new Phaser.Game(1500, 1000, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(1500, 800, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
     game.load.image('background', 'assets/Background.png');
@@ -33,7 +33,7 @@ function create() {
 
     game.time.desiredFps = 30;
 
-    bg = game.add.tileSprite(0, 0, 1500, 1000, 'background');
+    bg = game.add.tileSprite(0, 0, 1500, 800, 'background');
 
     game.physics.arcade.gravity.y = 250;
 
