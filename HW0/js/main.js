@@ -42,7 +42,7 @@ function create() {
     player = game.add.sprite(100, 163, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
-    player.body.bounce.y = 0.2;
+    player.body.bounce.y = 0.0;
     player.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
 
