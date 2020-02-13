@@ -57,7 +57,7 @@ function create() {
     
     console.log("wall");
     var leftWall = platforms.create(0, 0, 'wall');
-    leftWall.scale.setTo(0.7, 0.7);
+    leftWall.scale.setTo(0.7, 0.8);
     game.physics.arcade.enable(ground);
     //leftWall.enableBody = true;
     //leftWall.body.immovable = true;
