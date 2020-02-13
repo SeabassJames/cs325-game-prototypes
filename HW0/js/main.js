@@ -60,10 +60,10 @@ function create() {
     //create wall
     leftWall = game.add.sprite(0, 0, 'wall');
     leftWall.scale.setTo(0.7, 0.8);
-    //game.physics.arcade.enable(leftWall);
-    //leftWall.enableBody = true;
-    //leftWall.body.immovable = true;
-    //leftWall.body.gravityScale = 0;
+    game.physics.arcade.enable(leftWall);
+    leftWall.enableBody = true;
+    leftWall.body.immovable = true;
+    leftWall.body.gravityScale = 0;
     
     platforms.setAll('body.immovable', true);
     
@@ -76,7 +76,7 @@ function create() {
     //leftWall.body.collideWorldBounds = true;
     ground.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x, player.height / player.scale.y);
-    //leftWall.body.setSize(leftWall.width / leftWall.scale.x, leftWall.height / leftWall.scale.y);
+    leftWall.body.setSize(leftWall.width / leftWall.scale.x, leftWall.height / leftWall.scale.y);
     //platforms.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
     ground.body.setSize(ground.width / ground.scale.x, ground.height / ground.scale.y);
 
