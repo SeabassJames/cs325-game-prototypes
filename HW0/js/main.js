@@ -18,7 +18,7 @@ function preload() {
     console.log("preload");
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
-    //game.load.image('ground', 'assets/Grass.png');
+    game.load.image('ground', 'assets/Grass.png');
 }
 console.log("vars");
 var player;
@@ -27,19 +27,20 @@ var jumpTimer = 0;
 var cursors;
 var jumpButton;
 var bg;
-//var ground;
+var ground;
 
 function create() {
     console.log("create");
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.time.desiredFps = 30;
-
+    console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
-    //ground = game.add.tileSprite(1, 1500, 1500, 100, 'ground');
+    console.log("ground"); 
+    ground = game.add.tileSprite(0, 500, 1500, 100, 'ground');
 
     game.physics.arcade.gravity.y = 250;
-
+    console.log("player");
     player = game.add.sprite(100, 200, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
