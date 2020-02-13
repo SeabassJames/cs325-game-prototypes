@@ -17,7 +17,7 @@ var game = new Phaser.Game(1500, 1600, Phaser.CANVAS, 'game', { preload: preload
 function preload() {
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
-    game.load.image('ground', 'assets/Grass.png');
+    //game.load.image('ground', 'assets/Grass.png');
 }
 
 var player;
@@ -26,7 +26,7 @@ var jumpTimer = 0;
 var cursors;
 var jumpButton;
 var bg;
-var ground;
+//var ground;
 
 function create() {
 
@@ -35,7 +35,7 @@ function create() {
     game.time.desiredFps = 30;
 
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
-    ground = game.add.tileSprite(1, 1500, 1500, 100, 'ground');
+    //ground = game.add.tileSprite(1, 1500, 1500, 100, 'ground');
 
     game.physics.arcade.gravity.y = 250;
 
