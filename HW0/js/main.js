@@ -74,7 +74,7 @@ function create() {
 
     //create goal
     goal = game.add.sprite(200, 0, 'goal');
-    goal.scale.setTo(0.5, 0.5);
+    goal.scale.setTo(0.5, 0.1);
     
     player.body.collideWorldBounds = true;
     //leftWall.body.collideWorldBounds = true;
@@ -105,6 +105,7 @@ function update() {
     if (player.x >= 150 && player.y <= 500){
         player.body.velocity.y = -1;
         var winner = game.add.sprite(50, 50, 'win');
+        winner.scale.setTo(0.1, 0.1);
     }
     if (player.x <= 51){
         player.x = 50;
@@ -187,9 +188,9 @@ function render () {
 
     game.debug.text(game.time.suggestedFps, 32, 32);
 
-    // game.debug.text(game.time.physicsElapsed, 32, 32);
-     game.debug.body(player);
-     game.debug.bodyInfo(player, 16, 24);
+     //game.debug.text(game.time.physicsElapsed, 32, 32);
+     //game.debug.body(player);
+     //game.debug.bodyInfo(player, 16, 24);
      //game.debug.body(leftWall);
 }
 
