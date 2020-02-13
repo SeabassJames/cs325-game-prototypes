@@ -51,16 +51,16 @@ function create() {
     console.log("ground"); 
     var ground = platforms.create(0, 500, 'ground');
     game.physics.arcade.enable(ground);
-    ground.enableBody = true;
+    //ground.enableBody = true;
     ground.body.immovable = true;
     ground.body.gravityScale = 0;
     
     console.log("wall");
     var leftWall = platforms.create(0, 0, 'wall');
     game.physics.arcade.enable(ground);
-    leftWall.enableBody = true;
-    //leftWall.body.immovable = true;
-    //leftWall.body.gravityScale = 0;
+    //leftWall.enableBody = true;
+    leftWall.body.immovable = true;
+    leftWall.body.gravityScale = 0;
     
     
     console.log("player");
