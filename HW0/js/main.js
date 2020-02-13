@@ -17,11 +17,11 @@ var game = new Phaser.Game(2250, 1500, Phaser.CANVAS, 'game', { preload: preload
 function preload() {
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
-
+    game.load.spritesheet('ground', 'assets/Grass.png', 2250, 100);
 }
 
 var player;
-var facing = 'left';
+var facing = 'right';
 var jumpTimer = 0;
 var cursors;
 var jumpButton;
