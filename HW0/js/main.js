@@ -34,7 +34,7 @@ var cursors;
 var jumpButton;
 var bg;
 var ground;
-//var platforms;
+var platforms;
 var leftWall;
 
 function create() {
@@ -46,18 +46,22 @@ function create() {
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     
+    platforms = game.add.group();
+    
     console.log("ground"); 
-    ground = game.add.sprite(0, 500, 'ground');
+    var ground = platforms.create(0, 500, 'ground');
     game.physics.arcade.enable(ground);
     ground.enableBody = true;
     ground.body.immovable = true;
+    ground.body.gravityScale = 0;
     
     console.log("wall");
-    leftWall = game.add.sprite(0, 0, 'wall');
+    var leftWall = platforms.create(0, 0, 'wall');
     game.physics.arcade.enable(ground);
     leftWall.enableBody = true;
     leftWall.body.immovable = true;
-
+    leftWall.body.gravityScale = 0;
+    
     game.physics.arcade.gravity.y = 250;
     console.log("player");
     player = game.add.sprite(100, 200, 'dude');
