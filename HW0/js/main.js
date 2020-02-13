@@ -17,7 +17,7 @@ window.onload = function() {
 var game = new Phaser.Game(1500, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-    console.log("preload");
+    //load assets
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
     game.load.image('ground', 'assets/Grass.png');
@@ -26,7 +26,7 @@ function preload() {
     game.load.image('goal', 'assets/Goal.png');
     game.load.image('win', 'assets/WinScreen.png');
 }
-console.log("vars");
+    
 var player;
 var facing = 'right';
 var jumpTimer = 0;
@@ -38,24 +38,24 @@ var platforms;
 var leftWall;
 
 function create() {
-    console.log("create");
+    //
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 250;
     game.time.desiredFps = 30;
     
-    console.log("bg");
+    //generate background
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     
     platforms = game.add.group();
     
-    console.log("ground"); 
+    //create ground
     var ground = platforms.create(0, 500, 'ground');
     game.physics.arcade.enable(ground);
     //ground.enableBody = true;
     ground.body.immovable = true;
     ground.body.gravityScale = 0;
     
-    console.log("wall");
+    //create wall
     var leftWall = platforms.create(0, 0, 'wall');
     leftWall.scale.setTo(0.7, 0.8);
     game.physics.arcade.enable(ground);
@@ -63,13 +63,14 @@ function create() {
     //leftWall.body.immovable = true;
     //leftWall.body.gravityScale = 0;
     
-    
+    //create player
     console.log("player");
     player = game.add.sprite(100, 200, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
-    //player.body.bounce.y = 0.0;
+    
     player.body.collideWorldBounds = true;
+    //leftWall.body.collideWorldBounds = true;
     ground.body.collideWorldBounds = true;
     player.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
     //platforms.body.setSize(player.width / player.scale.x,player.height / player.scale.y);
