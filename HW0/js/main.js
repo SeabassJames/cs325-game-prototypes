@@ -15,11 +15,12 @@ window.onload = function() {
 var game = new Phaser.Game(1500, 1600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
+    console.log("preload");
     game.load.image('background', 'assets/Background.png');
     game.load.spritesheet('dude', 'assets/MagnetPantsManSpritesSmall.png', 100,163);
     //game.load.image('ground', 'assets/Grass.png');
 }
-
+console.log("vars");
 var player;
 var facing = 'right';
 var jumpTimer = 0;
@@ -29,7 +30,7 @@ var bg;
 //var ground;
 
 function create() {
-
+    console.log("create");
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.time.desiredFps = 30;
