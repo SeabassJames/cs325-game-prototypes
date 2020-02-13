@@ -60,10 +60,10 @@ function create() {
     //create wall
     var leftWall = platforms.create(0, 0, 'wall');
     leftWall.scale.setTo(0.7, 0.8);
-    game.physics.arcade.enable(leftWall);
-    leftWall.enableBody = true;
-    leftWall.body.immovable = true;
-    leftWall.body.gravityScale = 0;
+    //game.physics.arcade.enable(leftWall);
+    //leftWall.enableBody = true;
+    //leftWall.body.immovable = true;
+    //leftWall.body.gravityScale = 0;
     
     platforms.setAll('body.immovable', true);
     
@@ -95,7 +95,7 @@ function update() {
     game.physics.arcade.collide(player, leftWall, onLeftWall = true);
     game.physics.arcade.collide(player, platforms);
     //game.physics.arcade.collide(leftWall, platforms);
-    game.physics.arcade.collide(leftWall, ground);
+    //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
     if (player.touching != null && (player.touching.left || player.blocked.left)){
