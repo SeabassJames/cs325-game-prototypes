@@ -46,15 +46,15 @@ function create() {
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
     
-    //console.log("platforms");
-    //platforms = game.add.group();
-    
     console.log("ground"); 
     ground = game.add.sprite(0, 500, 'ground');
+    ground.enableBody = true;
+    ground.body.immovable = true;
     
     console.log("wall");
     leftWall = game.add.sprite(0, 0, 'wall');
-    
+    leftWall.enableBody = true;
+    leftWall.body.immovable = true;
 
     game.physics.arcade.gravity.y = 250;
     console.log("player");
@@ -72,16 +72,11 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     
-    //console.log("platforms cont..");
-    //game.physics.arcade.enable(platforms);
-    //platforms.enableBody = true;
-    //platforms.body.immovable = true;
 }
 
 function update() {
 
     game.physics.arcade.collide(player, ground);
-    //game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(player, leftWall);
     
     player.body.velocity.x = 0;
