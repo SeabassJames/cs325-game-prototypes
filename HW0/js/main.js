@@ -12,7 +12,7 @@ window.onload = function() {
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
     //https://www.html5gamedevs.com/topic/13932-problem-with-arcade-bodysetsize/
   
-var game = new Phaser.Game(1500, 1600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(1500, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
     console.log("preload");
