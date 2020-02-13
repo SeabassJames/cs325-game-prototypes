@@ -40,7 +40,7 @@ function create() {
     var platforms = game.add.group();
     
     console.log("ground"); 
-    var ground = platforms.create(0, 500, 1500, 100, 'ground');
+    var ground = platforms.create(0, 500, 'ground');
     game.physics.arcade.enable(ground);
     ground.body.immovable = true;
     ground.body.gravityScale = 0;
