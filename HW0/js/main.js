@@ -67,7 +67,7 @@ function create() {
 
 function update() {
 
-    // game.physics.arcade.collide(player, layer);
+    game.physics.arcade.collide(player, ground);
 
     player.body.velocity.x = 0;
 
