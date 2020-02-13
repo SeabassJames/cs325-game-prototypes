@@ -58,7 +58,7 @@ function create() {
     ground.body.gravityScale = 0;
     
     //create wall
-    var leftWall = platforms.create(0, 0, 'wall');
+    leftWall = game.add.sprite(0, 0, 'wall');
     leftWall.scale.setTo(0.7, 0.8);
     //game.physics.arcade.enable(leftWall);
     //leftWall.enableBody = true;
