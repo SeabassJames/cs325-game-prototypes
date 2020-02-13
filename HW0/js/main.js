@@ -39,7 +39,7 @@ function create() {
 
     game.physics.arcade.gravity.y = 250;
 
-    player = game.add.sprite(100, 163, 'dude');
+    player = game.add.sprite(0,100, 100, 163, 'dude');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
     player.body.bounce.y = 0.0;
