@@ -98,11 +98,11 @@ function update() {
     //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
-    //if (player.touching.left == true){
-    //    onLeftWall = true;
-    //}else{
-    //    onLeftWall = false;
-    //}
+    if (player.touching.left || player.blocked.left){
+        onLeftWall = true;
+    }else{
+        onLeftWall = false;
+    }
     //clinging to left wall
     if (onLeftWall == true){
         facing = 'left'
