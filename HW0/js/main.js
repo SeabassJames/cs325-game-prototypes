@@ -98,7 +98,7 @@ function update() {
     //game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
-    if (player.touching.left || player.blocked.left){
+    if (player.touching != null && (player.touching.left || player.blocked.left)){
         onLeftWall = true;
     }else{
         onLeftWall = false;
