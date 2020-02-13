@@ -37,6 +37,7 @@ var bg;
 var ground;
 var leftWall;
 var platforms;
+var onLeftWall = false;
 
 function create() {
     //
@@ -91,12 +92,34 @@ function create() {
 function update() {
 
     game.physics.arcade.collide(player, ground);
-    game.physics.arcade.collide(player, leftWall);
+    game.physics.arcade.collide(player, leftWall, onLeftWall = true);
     game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(leftWall, platforms);
+    game.physics.arcade.collide(leftWall, ground);
     
     player.body.velocity.x = 0;
-
-    if (cursors.left.isDown)
+    //clinging to left wall
+    if (onLeftWall == true){
+        player.body.velocity.y = 0;
+        if (cursors.up.isDown){
+            player.body.velocity.y = -100;
+            player.animations.play('left');
+        }
+        else if (cursors.down.isDown){
+            player.body.velocity.y = 100;
+            player.animations.play('left');
+        }
+        else{
+            player.animations.stop();
+            player.frame = 0;
+        }
+        if (jumpButton.isDown){
+            player.body.velocity.y = -200;
+            player.body.velocity.x = 250;
+            onLeftWall = false;
+        }
+    }
+    else if (cursors.left.isDown)
     {
         player.body.velocity.x = -150;
 
