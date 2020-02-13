@@ -68,8 +68,8 @@ function create() {
     //platforms.setAll('body.immovable', true);
     
     //create player
-    player = game.add.sprite(100, 200, 'dude');
-    game.physics.enable(player, Phaser.Physics.ARCADE);
+    player = game.add.sprite(100, 300, 'dude');
+    game.physics.arcade.enable(player);
 
     
     player.body.collideWorldBounds = true;
