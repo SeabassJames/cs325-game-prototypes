@@ -37,7 +37,7 @@ function create() {
     
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
-    platforms = game.add.group();
+    var platforms = game.add.group();
     
     console.log("ground"); 
     var ground = platforms.create(0, 500, 1500, 100, 'ground');
