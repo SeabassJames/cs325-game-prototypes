@@ -11,6 +11,7 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     //https://phaser.io/examples/v2/arcade-physics/platformer-basics
     //https://www.html5gamedevs.com/topic/13932-problem-with-arcade-bodysetsize/
+    //https://phaser.io/examples/v2/ninja-physics/ninja-platforms
   
 var game = new Phaser.Game(1500, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
@@ -27,7 +28,6 @@ var jumpTimer = 0;
 var cursors;
 var jumpButton;
 var bg;
-var ground;
 
 function create() {
     console.log("create");
@@ -36,8 +36,9 @@ function create() {
     game.time.desiredFps = 30;
     console.log("bg");
     bg = game.add.tileSprite(0, 0, 1500, 600, 'background');
+    platforms = game.add.group();
     console.log("ground"); 
-    ground = game.add.tileSprite(0, 500, 1500, 100, 'ground');
+    var ground = platforms.create(0, 500, 1500, 100, 'ground');
 
     game.physics.arcade.gravity.y = 250;
     console.log("player");
