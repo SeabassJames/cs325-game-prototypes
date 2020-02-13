@@ -59,12 +59,12 @@ function create() {
     //create wall
     var leftWall = platforms.create(0, 0, 'wall');
     leftWall.scale.setTo(0.7, 0.8);
-    game.physics.arcade.enable(ground);
+    game.physics.arcade.enable(leftWall);
     //leftWall.enableBody = true;
-    //leftWall.body.immovable = true;
-    //leftWall.body.gravityScale = 0;
+    leftWall.body.immovable = true;
+    leftWall.body.gravityScale = 0;
     
-    platforms.setAll('body.immovable', true);
+    //platforms.setAll('body.immovable', true);
     
     //create player
     console.log("player");
