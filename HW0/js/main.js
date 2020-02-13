@@ -48,11 +48,13 @@ function create() {
     
     console.log("ground"); 
     ground = game.add.sprite(0, 500, 'ground');
+    game.physics.arcade.enable(ground);
     ground.enableBody = true;
     ground.body.immovable = true;
     
     console.log("wall");
     leftWall = game.add.sprite(0, 0, 'wall');
+    game.physics.arcade.enable(ground);
     leftWall.enableBody = true;
     leftWall.body.immovable = true;
 
