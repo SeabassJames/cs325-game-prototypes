@@ -125,13 +125,16 @@ BasicGame.Game.prototype = {
             }
             if (this.checkOverlap(this.bean10, this.ghost)){
                 this.gas += 10;
+                if (this.gas >100){
+                    this.gas = 100;
+                }
                 this.bean10.destroy();
                 this.bean10 = null;
             }
             
 
             this.score += 1;
-            this.gas -= 0.8;
+            this.gas -= 0.7;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
         }else{
             //out of gas
