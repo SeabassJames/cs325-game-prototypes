@@ -148,6 +148,18 @@ BasicGame.Game.prototype = {
         //  Then let's go back to the main menu.
         this.state.start('MainMenu');
 
-    }
+    },
+    
+    
+    checkOverlap: function (spriteA, spriteB) {
+    
+        var boundsA = spriteA.getBounds();
+        var boundsB = spriteB.getBounds();
+        
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
+
+}
+    
+    
 
 };
