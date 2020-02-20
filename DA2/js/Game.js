@@ -25,15 +25,17 @@ BasicGame.Game = function (game) {
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     */
     
+    //Source: http://phaser.io/examples/v2/arcade-physics/accelerate-to-pointer
+    
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
     this.bouncy = null;
 };
 
 BasicGame.Game.prototype = {
-
+    var sprite
     create: function () {
-
+        /*
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Create a sprite at the center of the screen using the 'logo' image.
@@ -56,6 +58,20 @@ BasicGame.Game.prototype = {
         // When you click on the sprite, you go back to the MainMenu.
         this.bouncy.inputEnabled = true;
         this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        */
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        game.stage.backgroundColor = '#0072bc';
+
+        sprite = game.add.sprite(400, 300, 'logo');
+        sprite.anchor.setTo(0.5, 0.5);
+
+        //  Enable Arcade Physics for the sprite
+        game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+        //  Tell it we don't want physics to manage the rotation
+        sprite.body.allowRotation = false;
+    
     },
 
     update: function () {
@@ -67,7 +83,8 @@ BasicGame.Game.prototype = {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
+        //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
+        sprite.rotation = game.physics.arcade.moveToPointer(sprite, 60, game.input.activePointer, 500);
     },
 
     quitGame: function () {
