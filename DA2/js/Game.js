@@ -33,7 +33,7 @@ BasicGame.Game = function (game) {
 };
 
 BasicGame.Game.prototype = {
-    var sprite;
+    //var sprite;
     create: function () {
         /*
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -63,14 +63,14 @@ BasicGame.Game.prototype = {
 
         game.stage.backgroundColor = '#0072bc';
 
-        sprite = game.add.sprite(400, 300, 'logo');
-        sprite.anchor.setTo(0.5, 0.5);
+        this.bouncy = game.add.sprite(400, 300, 'logo');
+        this.bouncy.anchor.setTo(0.5, 0.5);
 
         //  Enable Arcade Physics for the sprite
-        game.physics.enable(sprite, Phaser.Physics.ARCADE);
+        game.physics.enable(this.bouncy, Phaser.Physics.ARCADE);
 
         //  Tell it we don't want physics to manage the rotation
-        sprite.body.allowRotation = false;
+        this.bouncy.body.allowRotation = false;
     
     },
 
@@ -84,7 +84,7 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
-        sprite.rotation = game.physics.arcade.moveToPointer(sprite, 60, game.input.activePointer, 500);
+        this.bouncy.rotation = game.physics.arcade.moveToPointer(this.bouncy, 60, this.game.input.activePointer, 500);
     },
 
     quitGame: function () {
