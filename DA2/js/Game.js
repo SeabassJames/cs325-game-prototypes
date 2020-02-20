@@ -78,9 +78,9 @@ BasicGame.Game.prototype = {
         this.ghost.scale.setTo(0.3, 0.3);
         
         //animations
-        this.ghost.animations.add('left', [0, 1], 10, true);
-        this.ghost.animations.add('turn', [2], 20, true);
-        this.ghost.animations.add('right', [3,4], 10, true);
+        this.ghost.animations.add('left', [0, 1], 20, true);
+        this.ghost.animations.add('turn', [2, 5], 20, true);
+        this.ghost.animations.add('right', [3,4], 20, true);
         
     },
 
@@ -95,20 +95,19 @@ BasicGame.Game.prototype = {
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
         this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
-        if (this.ghost.deltaX > 0){
+        if (this.ghost.deltaX > 0.7){
             if (this.facing != 'right'){
                 this.ghost.animations.play('right');
                 this.facing = 'right';
             }
-        }else if (this.ghost.deltaX < 0){
+        }else if (this.ghost.deltaX < -0.7){
             if (this.facing != 'left'){
                 this.ghost.animations.play('left');
                 this.facing = 'left';
             }
         }else{
             if (this.facing != 'turn'){
-                this.ghost.animations.stop();
-                this.ghost.frame = 2;
+                this.ghost.animations.play('turn');
                 this.facing = 'turn'; 
             }
         }
