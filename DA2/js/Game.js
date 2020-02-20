@@ -84,7 +84,7 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
-        this.bouncy.rotation = this.game.physics.arcade.moveToPointer(this.bouncy, 60, this.game.input.activePointer, 500);
+        this.game.physics.arcade.moveToPointer(this.bouncy, 500, this.game.input.activePointer, 80);
     },
 
     quitGame: function () {
