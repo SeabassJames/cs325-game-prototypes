@@ -94,30 +94,36 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
+        if (this.gas > 0){
+            //Move ghost towards the cursor
+            this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
+            //update animation based on deltaX
+            if (this.ghost.deltaX > 0.7){
+                if (this.facing != 'right'){
+                    this.ghost.animations.play('right');
+                    this.facing = 'right';
+                }
+            }else if (this.ghost.deltaX < -0.7){
+                if (this.facing != 'left'){
+                    this.ghost.animations.play('left');
+                    this.facing = 'left';
+                }
+            }else{
+                if (this.facing != 'turn'){
+                    this.ghost.animations.play('turn');
+                    this.facing = 'turn'; 
+                }
+            }
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        //Move ghost towards the cursor
-        this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
-        //update animation based on deltaX
-        if (this.ghost.deltaX > 0.7){
-            if (this.facing != 'right'){
-                this.ghost.animations.play('right');
-                this.facing = 'right';
-            }
-        }else if (this.ghost.deltaX < -0.7){
-            if (this.facing != 'left'){
-                this.ghost.animations.play('left');
-                this.facing = 'left';
-            }
+            this.score += 1;
+            this.gas -= 1;
+            this.text.text = "Gas: " + this.gas + "\nScore: " + this.score;
         }else{
-            if (this.facing != 'turn'){
-                this.ghost.animations.play('turn');
-                this.facing = 'turn'; 
-            }
+            //out of gas
+            this.text.text =  "Gas: " + this.gas + "\nScore: " + this.score + "\n\n\nGAME OVER";
         }
-        this.score += 1;
-        this.gas -= 1;
     },
+
 
     quitGame: function () {
 
