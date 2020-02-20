@@ -26,12 +26,17 @@ BasicGame.Game = function (game) {
     */
     
     //Source: http://phaser.io/examples/v2/arcade-physics/accelerate-to-pointer
-    //https://github.com/SeabassJames/cs325-game-prototypes/blob/master/HW0/js/main.js
+    //animations: https://github.com/SeabassJames/cs325-game-prototypes/blob/master/HW0/js/main.js
+    //text: https://phaser.io/examples/v2/text/text-events
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
     this.ghost = null;
     this.facing = 'turn';
+    this.gas = 100;
+    this.spawntimer = 0;
+    this.bg = null;
+    this.score = 0
 };
 
 BasicGame.Game.prototype = {
@@ -51,16 +56,20 @@ BasicGame.Game.prototype = {
         // Make it bounce off of the world bounds.
         this.ghost.body.collideWorldBounds = true;
         
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = this.game.add.text( this.game.world.centerX, 15, "Build something amazing.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        
         
         // When you click on the sprite, you go back to the MainMenu.
         this.ghost.inputEnabled = true;
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
+        
+        // Add some text using a CSS style.
+        // Center it in X, and position its top 15 pixels from the top of the world.
+        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        var text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, style );
+        text.anchor.setTo( 0.5, 0.0 );
+        
+        
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.game.stage.backgroundColor = '#0072bc';
@@ -87,14 +96,9 @@ BasicGame.Game.prototype = {
     update: function () {
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
+        //Move ghost towards the cursor
         this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
+        //update animation based on deltaX
         if (this.ghost.deltaX > 0.7){
             if (this.facing != 'right'){
                 this.ghost.animations.play('right');
@@ -111,6 +115,8 @@ BasicGame.Game.prototype = {
                 this.facing = 'turn'; 
             }
         }
+        this.score += 1;
+        this.gas -= 1;
     },
 
     quitGame: function () {
