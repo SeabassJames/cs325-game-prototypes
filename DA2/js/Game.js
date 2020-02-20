@@ -34,7 +34,7 @@ BasicGame.Game = function (game) {
     // member variables here. Otherwise, you will do it in create().
     this.ghost = null;
     this.facing = 'turn';
-    this.gas = 100;
+    this.gas = 100.0;
     this.spawntimer = 0;
     this.bg = null;
     this.score = 0;
@@ -131,7 +131,7 @@ BasicGame.Game.prototype = {
             
 
             this.score += 1;
-            this.gas -= 1;
+            this.gas -= 0.5;
             this.text.text = "Gas: " + this.gas + "\nScore: " + this.score;
         }else{
             //out of gas
