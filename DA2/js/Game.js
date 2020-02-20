@@ -98,12 +98,12 @@ BasicGame.Game.prototype = {
         if (this.ghost.deltaX > 0){
             if (this.facing != 'right'){
                 this.ghost.animations.play('right');
-                this.facing = right;
+                this.facing = 'right';
             }
         }else if (this.ghost.deltaX < 0){
             if (this.facing != 'left'){
                 this.ghost.animations.play('left');
-                this.facing = left;
+                this.facing = 'left';
             }
         }else{
             if (this.facing != 'turn'){
