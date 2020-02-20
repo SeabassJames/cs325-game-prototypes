@@ -25,9 +25,10 @@ BasicGame.Game = function (game) {
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     */
     
-    //Source: http://phaser.io/examples/v2/arcade-physics/accelerate-to-pointer
+    //follow cursor: http://phaser.io/examples/v2/arcade-physics/accelerate-to-pointer
     //animations: https://github.com/SeabassJames/cs325-game-prototypes/blob/master/HW0/js/main.js
     //text: https://phaser.io/examples/v2/text/text-events
+    //overlap: https://www.phaser.io/examples/v2/sprites/overlap-without-physics
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
@@ -41,6 +42,7 @@ BasicGame.Game = function (game) {
     // Center it in X, and position its top 15 pixels from the top of the world.
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
+    this.bean10 = null;
 };
 
 BasicGame.Game.prototype = {
@@ -114,9 +116,19 @@ BasicGame.Game.prototype = {
                     this.facing = 'turn'; 
                 }
             }
+            
+            //beans
+            if (this.bean10 == null){
+                this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
+            }
+            if (checkOverlap(this.bean10, this.ghost)){
+                this.gas += 10;
+                this.bean10 = null;
+            }
+            
 
             this.score += 1;
-            this.gas -= 1;
+            this.gas -= 0.1;
             this.text.text = "Gas: " + this.gas + "\nScore: " + this.score;
         }else{
             //out of gas
