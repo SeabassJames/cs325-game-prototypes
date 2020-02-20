@@ -95,12 +95,12 @@ BasicGame.Game.prototype = {
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
         this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
-        if (this.ghost.velocity.x > 0){
+        if (this.ghost.deltaX > 0){
             if (this.facing != 'right'){
                 this.ghost.animations.play('right');
                 this.facing = right;
             }
-        }else if (this.ghost.velocity.x < 0){
+        }else if (this.ghost.deltaX < 0){
             if (this.facing != 'left'){
                 this.ghost.animations.play('left');
                 this.facing = left;
