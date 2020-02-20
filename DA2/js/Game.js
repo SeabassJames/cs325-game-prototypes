@@ -70,13 +70,13 @@ BasicGame.Game.prototype = {
         */
         this.music = this.add.audio('ghostBusters');
         this.music.play();
-        this.text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
-        this.text.anchor.setTo( 0.5, 0.0 );
+        this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
+        
         
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.game.stage.backgroundColor = '#0072bc';
+        this.game.stage.backgroundColor = '#0173bd';
 
         this.ghost = this.game.add.sprite(300, 300, 'ghost');
         this.ghost.anchor.setTo(0.5, 0.5);
@@ -132,7 +132,7 @@ BasicGame.Game.prototype = {
 
             this.score += 1;
             this.gas -= 0.8;
-            this.text.text = "Gas: " + this.gas + "\nScore: " + this.score;
+            this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
         }else{
             //out of gas
             this.text.text =  "Gas: " + this.gas + "\nScore: " + this.score + "\n\n\nGAME OVER";
