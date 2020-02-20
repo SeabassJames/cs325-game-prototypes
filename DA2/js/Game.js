@@ -65,7 +65,7 @@ BasicGame.Game.prototype = {
 
         this.game.stage.backgroundColor = '#0072bc';
 
-        this.ghost = this.game.add.sprite(400, 300, 'logo');
+        this.ghost = this.game.add.sprite(300, 300, 'ghost');
         this.ghost.anchor.setTo(0.5, 0.5);
 
         //  Enable Arcade Physics for the sprite
