@@ -134,7 +134,7 @@ BasicGame.Game.prototype = {
             
 
             this.score += 1;
-            this.gas -= 0.45;
+            this.gas -= 0.55;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
         }else{
             //out of gas
