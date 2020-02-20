@@ -121,6 +121,7 @@ BasicGame.Game.prototype = {
         }else{
             //out of gas
             this.text.text =  "Gas: " + this.gas + "\nScore: " + this.score + "\n\n\nGAME OVER";
+            this.ghost.animations.stop();
         }
     },
 
