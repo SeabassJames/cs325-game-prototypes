@@ -139,7 +139,7 @@ BasicGame.Game.prototype = {
         }else{
             //out of gas
             this.gas = 0;
-            this.text.text =  "Gas: " + this.gas + "\nScore: " + this.score + "\n\n\nGAME OVER";
+            this.text.text =  "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
             this.ghost.animations.stop();
         }
     },
