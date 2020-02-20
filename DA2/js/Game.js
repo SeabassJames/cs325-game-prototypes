@@ -59,15 +59,15 @@ BasicGame.Game.prototype = {
         this.bouncy.inputEnabled = true;
         this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        game.stage.backgroundColor = '#0072bc';
+        this.game.stage.backgroundColor = '#0072bc';
 
-        this.bouncy = game.add.sprite(400, 300, 'logo');
+        this.bouncy = this.game.add.sprite(400, 300, 'logo');
         this.bouncy.anchor.setTo(0.5, 0.5);
 
         //  Enable Arcade Physics for the sprite
-        game.physics.enable(this.bouncy, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.bouncy, Phaser.Physics.ARCADE);
 
         //  Tell it we don't want physics to manage the rotation
         this.bouncy.body.allowRotation = false;
@@ -84,7 +84,7 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
-        this.bouncy.rotation = game.physics.arcade.moveToPointer(this.bouncy, 60, this.game.input.activePointer, 500);
+        this.bouncy.rotation = this.game.physics.arcade.moveToPointer(this.bouncy, 60, this.game.input.activePointer, 500);
     },
 
     quitGame: function () {
