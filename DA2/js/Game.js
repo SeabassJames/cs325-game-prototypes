@@ -66,7 +66,7 @@ BasicGame.Game.prototype = {
         this.ghost.inputEnabled = true;
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
-        this.text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, style );
+        this.text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
         this.text.anchor.setTo( 0.5, 0.0 );
         
         
