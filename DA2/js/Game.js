@@ -123,7 +123,7 @@ BasicGame.Game.prototype = {
             if (this.bean10 == null){
                 this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
             }
-            if (checkOverlap(this.bean10, this.ghost)){
+            if (this.checkOverlap(this.bean10, this.ghost)){
                 this.gas += 10;
                 this.bean10.destroy();
                 this.bean10 = null;
