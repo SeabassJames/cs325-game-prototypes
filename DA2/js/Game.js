@@ -29,7 +29,7 @@ BasicGame.Game = function (game) {
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
-    this.bouncy = null;
+    this.ghost = null;
 };
 
 BasicGame.Game.prototype = {
@@ -39,15 +39,15 @@ BasicGame.Game.prototype = {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
+        this.ghost = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        this.bouncy.anchor.setTo( 0.5, 0.5 );
+        this.ghost.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
-        this.game.physics.enable( this.bouncy, Phaser.Physics.ARCADE );
+        this.game.physics.enable( this.ghost, Phaser.Physics.ARCADE );
         // Make it bounce off of the world bounds.
-        this.bouncy.body.collideWorldBounds = true;
+        this.ghost.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
@@ -56,21 +56,24 @@ BasicGame.Game.prototype = {
         text.anchor.setTo( 0.5, 0.0 );
         
         // When you click on the sprite, you go back to the MainMenu.
-        this.bouncy.inputEnabled = true;
-        this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        this.ghost.inputEnabled = true;
+        this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.game.stage.backgroundColor = '#0072bc';
 
-        this.bouncy = this.game.add.sprite(400, 300, 'logo');
-        this.bouncy.anchor.setTo(0.5, 0.5);
+        this.ghost = this.game.add.sprite(400, 300, 'logo');
+        this.ghost.anchor.setTo(0.5, 0.5);
 
         //  Enable Arcade Physics for the sprite
-        this.game.physics.enable(this.bouncy, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.ghost, Phaser.Physics.ARCADE);
 
         //  Tell it we don't want physics to manage the rotation
-        this.bouncy.body.allowRotation = false;
+        this.ghost.body.allowRotation = false;
+        
+        // Make sprite smaller
+        this.ghost.scale.setTo(0.3, 0.3);
     
     },
 
@@ -84,7 +87,7 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 5000, 5000, 5000 );
-        this.game.physics.arcade.moveToPointer(this.bouncy, 500, this.game.input.activePointer, 80);
+        this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
     },
 
     quitGame: function () {
