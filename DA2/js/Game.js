@@ -36,7 +36,11 @@ BasicGame.Game = function (game) {
     this.gas = 100;
     this.spawntimer = 0;
     this.bg = null;
-    this.score = 0
+    this.score = 0;
+    // Add some text using a CSS style.
+    // Center it in X, and position its top 15 pixels from the top of the world.
+    var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+    this.text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, style );
 };
 
 BasicGame.Game.prototype = {
@@ -63,11 +67,8 @@ BasicGame.Game.prototype = {
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
         
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = this.game.add.text( this.game.world.centerX, 15, "Gas: " + this.gas + "\nScore: " + this.score, style );
-        text.anchor.setTo( 0.5, 0.0 );
+        
+        this.text.anchor.setTo( 0.5, 0.0 );
         
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
