@@ -136,6 +136,12 @@ BasicGame.Game.prototype = {
             
 
             this.score += 1;
+            if (this.score == 9001){
+                this.game.stage.backgroundColor = '#ffff00';
+                this.music.stop();
+                this.music = this.add.audio('ghostNappa');
+                this.music.play();
+            }
             this.gas -= 0.55;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
         }else{
