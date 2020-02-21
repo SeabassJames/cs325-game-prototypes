@@ -71,6 +71,7 @@ BasicGame.Game.prototype = {
         this.music = this.add.audio('ghostBusters');
         this.sfx = this.add.audio('fart');
         this.music.play();
+        this.music.loop = true;
         this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
         
         
@@ -141,6 +142,7 @@ BasicGame.Game.prototype = {
                 this.music.stop();
                 this.music = this.add.audio('ghostNappa');
                 this.music.play();
+                this.music.loop = true;
             }
             this.gas -= 0.55;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
