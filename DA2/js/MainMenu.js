@@ -37,6 +37,8 @@ BasicGame.MainMenu.prototype = {
 		if (this.clickcount <= 0){
 			this.add.sprite(0, 0, 'instructions');
 			this.clickcount ++;
+			this.playButton = null;
+			this.playButton = this.add.button( 303, 500, 'playButton', this.startGame, this, 'over', 'out', 'down');
 		}else{
 			//	And start the game
 			this.state.start('Game');
