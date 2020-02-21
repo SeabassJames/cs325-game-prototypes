@@ -69,6 +69,7 @@ BasicGame.Game.prototype = {
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
         this.music = this.add.audio('ghostBusters');
+        this.sfx = this.add.audio('fart');
         this.music.play();
         this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
         
@@ -130,6 +131,7 @@ BasicGame.Game.prototype = {
                 }
                 this.bean10.destroy();
                 this.bean10 = null;
+                this.sfx.play();
             }
             
 
