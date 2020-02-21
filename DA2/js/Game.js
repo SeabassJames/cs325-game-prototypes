@@ -35,7 +35,7 @@ BasicGame.Game = function (game) {
     this.ghost = null;
     this.facing = 'turn';
     this.gas = 100.0;
-    this.spawntimer = 0;
+    //this.spawntimer = 0;
     this.bg = null;
     this.score = 0;
     // Add some text using a CSS style.
@@ -138,19 +138,20 @@ BasicGame.Game.prototype = {
 
             this.score += 1;
             if (this.score == 9001){
-                this.game.stage.backgroundColor = '#ffff00';
+                this.game.stage.backgroundColor = '#fafa00';
                 this.music.stop();
                 this.music = this.add.audio('ghostNappa');
                 this.music.play();
                 this.music.loop = true;
             }
-            this.gas -= 0.55;
+            this.gas -= 0.65;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
         }else{
             //out of gas
             this.gas = 0;
             this.text.text =  "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
             this.ghost.animations.stop();
+            this.music.loop = false;
         }
     },
 
