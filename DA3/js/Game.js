@@ -44,7 +44,7 @@ BasicGame.Game = function (game) {
     this.text = null;
     this.washerState = "paused";
     this.dryerState = "open";
-    this.curtainState = "closed";
+    this.curtainState = "off";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
     this.difficulty = 5;
@@ -135,7 +135,7 @@ BasicGame.Game.prototype = {
             if (this.washerTime <= 0 & this.washerState != "open"){
                 this.washerTime = 0;
                 this.washerState = "stopped";
-                this.washer.animations.play('stopped');
+                this.washer.animations.play('off');
                 if (this.john.body.bottom <= 370 & this.john.body.left > this.washer.left - 10 & this.john.body.right < this.washer.right + 10 & this.actButton.isDown){
                     this.washerState = "open";
                     this.washer.animations.play('open');
@@ -162,18 +162,20 @@ BasicGame.Game.prototype = {
             //dryer
             if (this.dryerTime <= 0 & this.dryerState != "open"){
                 this.dryerTime = 0;
-                this.dryerState = "stopped";
-                this.dryer.animations.play('stopped');
+                this.dryerState = "off";
+                this.dryer.animations.play('off');
                 if (this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                     this.dryerState = "open";
                     this.dryer.animations.play('open');
                 }
-            }else if (this.dryerState == "open"){
+            }else if (this.dryerState == "off" & this.dryerTime > 0){
                 if (this.holdinglaundry == true & this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                     this.dryerState = "running";
                     this.dryer.animations.play('running');
-                    this.holdingaundry = false;
+                    this.holdinglaundry = false;
                 }
+            }else if (this.dryerState == "off"){
+                this.dryer.animations.play('off');
             }else{
                 if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                     this.dryerState = "paused"
