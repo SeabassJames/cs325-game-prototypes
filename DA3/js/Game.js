@@ -99,7 +99,7 @@ BasicGame.Game.prototype = {
         this.john.body.allowRotation = false;
         
         // Make sprite smaller
-        this.john.scale.setTo(0.5 0.5);
+        this.john.scale.setTo(0.5, 0.5);
         
         //animations
         this.john.animations.add('left', [0, 1, 2, 3], 20, true);
