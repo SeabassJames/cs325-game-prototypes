@@ -135,7 +135,7 @@ BasicGame.Game.prototype = {
                 this.washerTime = 0;
                 this.washerState = "stopped";
                 this.washer.animations.play('stopped');
-                if (this.john.body.bottom <= 370 & this.john.body.left > this.washer.body.left - 10 & this.john.body.right < this.washer.body.right + 10 & this.actButton.isDown){
+                if (this.john.body.bottom <= 370 & this.john.body.left > this.washer.left - 10 & this.john.body.right < this.washer.right + 10 & this.actButton.isDown){
                     this.washerState = "open";
                     this.washer.animations.play('open');
                     this.holdinglaundry = true;
@@ -152,7 +152,7 @@ BasicGame.Game.prototype = {
                         this.washer.animations.play('running');
                     }
                 }else{
-                    this.washerTime -= 1.0/60;
+                    this.washerTime -= 1.0/600;
                 }
             }
             
@@ -181,7 +181,7 @@ BasicGame.Game.prototype = {
                         this.dryer.animations.play('running');
                     }
                 }else{
-                    this.dryerTime -= 1.0/60;
+                    this.dryerTime -= 1.0/600;
                 }
             }
             
@@ -193,8 +193,9 @@ BasicGame.Game.prototype = {
             if (this.john.body.left <= 90 & this.actButton.isDown){
                 this.curtainState = "closed";
                 this.curtains.animations.play('closed');
-            }else if (this.curtainState == "open"){
-                this.privacy -= 0.5;
+            }
+            if (this.curtainState == "open"){
+                this.privacy -= 0.1;
             }else{
                 this.privacy += 0.1;
             }
