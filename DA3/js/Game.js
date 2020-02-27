@@ -175,6 +175,7 @@ BasicGame.Game.prototype = {
                     this.holdinglaundry = false;
                 }else{
                     this.dryer.animations.play('open');
+                }
             }else if (this.dryerState == "off"){
                 this.dryer.animations.play('off');
             }else{
