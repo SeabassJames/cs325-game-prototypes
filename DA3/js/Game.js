@@ -43,11 +43,12 @@ BasicGame.Game = function (game) {
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
     this.washerState = "paused";
-    this.dryerState = "off";
+    this.dryerState = "open";
     this.curtainState = "closed";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
     this.difficulty = 3;
+    this.holdinglaundry = false;
 };
 
 BasicGame.Game.prototype = {
@@ -105,6 +106,7 @@ BasicGame.Game.prototype = {
         this.john.animations.add('left', [0, 1, 2, 3], 20, true);
         this.john.animations.add('turn', [4], 20, true);
         this.john.animations.add('right', [5,6, 7, 8], 20, true);
+        this.john.animations.add('laundry', [9], 20, true);
         
         this.washer.animations.add('running', [0,1], 20, true);
         this.washer.animations.add('paused', [2], 20, true);
@@ -136,6 +138,8 @@ BasicGame.Game.prototype = {
                 if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.body.left - 5 & this.john.body.right < this.washer.body.right + 5 & this.actButton.isDown){
                     this.washerState = "open";
                     this.washer.animations.play('open');
+                    this.holdinglaundry = true;
+                    this.john.animations.play('laundry');
                 }
             }else{
                 if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
@@ -158,6 +162,11 @@ BasicGame.Game.prototype = {
                 if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
                     this.dryerState = "open";
                     this.dryer.animations.play('open');
+                }
+            }else if (this.dryerState == "open"){
+                if (this.holdinglaundry == true & this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
+                    this.dryerState = "running";
+                    this.dryer.animations.play('running');
                 }
             }else{
                 if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
@@ -218,9 +227,11 @@ BasicGame.Game.prototype = {
                 if (this.facing != 'idle')
                 {
                     this.john.animations.play('turn');
-
                     this.facing = 'idle';
                 }
+            }
+            if (this.holdinglaundry == true){
+                this.john.animations.play('laundry');
             }
             //vertical movement
             if (this.cursors.down.isDown & this.john.body.bottom < 600)
