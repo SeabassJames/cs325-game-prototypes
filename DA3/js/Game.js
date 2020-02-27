@@ -196,8 +196,14 @@ BasicGame.Game.prototype = {
             }
             if (this.curtainState == "open"){
                 this.privacy -= 0.1;
+                if (this.privacy < 0){
+                    this.privacy = 0;
+                }
             }else{
                 this.privacy += 0.1;
+                if (this.privacy >= 100){
+                    this.privacy = 100;
+                }
             }
             
             //comics
