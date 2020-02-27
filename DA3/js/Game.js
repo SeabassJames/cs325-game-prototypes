@@ -212,7 +212,7 @@ BasicGame.Game.prototype = {
             }
             
             //horizontal movement
-            if (this.cursors.left.isDown & this.john.body.left > 0)
+            if (this.cursors.left.isDown & this.john.body.left > 50)
             {
                 this.john.body.velocity.x = -400;
 
@@ -222,7 +222,7 @@ BasicGame.Game.prototype = {
                     this.facing = 'left';
                 }
             }
-            else if (this.cursors.right.isDown & this.john.body.right < 730)
+            else if (this.cursors.right.isDown & this.john.body.right < 750)
             {
                 this.john.body.velocity.x = 400;
 
@@ -249,7 +249,7 @@ BasicGame.Game.prototype = {
                 this.john.body.velocity.y = 350;
 
             }
-            else if (this.cursors.up.isDown & this.john.body.bottom > 350)
+            else if (this.cursors.up.isDown & this.john.body.bottom > 360)
             {
                 this.john.body.velocity.y = -350;
 
