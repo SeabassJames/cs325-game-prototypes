@@ -49,6 +49,7 @@ BasicGame.Game = function (game) {
     this.dryerTime = 60.00;
     this.difficulty = 5;
     this.holdinglaundry = false;
+    this.gameWin = false;
 };
 
 BasicGame.Game.prototype = {
@@ -187,7 +188,7 @@ BasicGame.Game.prototype = {
             }
             
             //curtains
-            if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
+            if (this.gameWin == false & this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                 this.curtainState = "open";
                 this.curtains.animations.play('open');
             }
@@ -266,6 +267,7 @@ BasicGame.Game.prototype = {
             */
             this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\nDryer time: " + parseInt(this.dryerTime) + ":" + parseInt((this.dryerTime - parseInt(this.dryerTime)) * 60);
             if (this.dryerTime <= 0){
+                this.gameWin = true;
                 this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nYour laundry is all done!";
             }
         }else{
