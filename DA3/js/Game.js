@@ -34,7 +34,7 @@ BasicGame.Game = function (game) {
     // member variables here. Otherwise, you will do it in create().
     this.john = null;
     this.facing = 'idle';
-    this.gas = 100.0;
+    this.privacy = 100.0;
     //this.spawntimer = 0;
     this.bg = null;
     this.score = 0;
@@ -43,6 +43,8 @@ BasicGame.Game = function (game) {
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
     this.bean10 = null;
+    this.washerState = "running";
+    this.dryerState = "off";
 };
 
 BasicGame.Game.prototype = {
@@ -100,34 +102,26 @@ BasicGame.Game.prototype = {
         this.john.animations.add('turn', [2, 5], 20, true);
         this.john.animations.add('right', [3,4], 20, true);
         
+        this.washer.animations.add('running', [0,1], 20, true);
+        this.washer.animations.add('paused', [2], 20, true);
+        this.washer.animations.add('off', [3], 20, true);
+        this.washer.animations.add('open', [4], 20, true);
+        
+        this.dryer.animations.add('running', [0,1], 20, true);
+        this.dryer.animations.add('paused', [2], 20, true);
+        this.dryer.animations.add('off', [3], 20, true);
+        this.dryer.animations.add('open', [4], 20, true);
+        
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.actButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
 
     update: function () {
         
-        //if (this.gas > 0){
-            //Move ghost towards the cursor
-            //this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
-            //update animation based on deltaX
-        /*
-            if (this.ghost.deltaX > 0.7){
-                if (this.facing != 'right'){
-                    this.ghost.animations.play('right');
-                    this.facing = 'right';
-                }
-            }else if (this.ghost.deltaX < -0.7){
-                if (this.facing != 'left'){
-                    this.ghost.animations.play('left');
-                    this.facing = 'left';
-                }
-            }else{
-                if (this.facing != 'turn'){
-                    this.ghost.animations.play('turn');
-                    this.facing = 'turn'; 
-                }
-            }
-            */
+        if (this.privacy > 0){
+            
+            //washer
+            
             this.john.body.velocity.x = 0;
             this.john.body.velocity.y = 0;
             //horizontal movement
@@ -195,17 +189,17 @@ BasicGame.Game.prototype = {
                 this.music.play();
                 this.music.loop = true;
             }
-            this.gas -= 0.65;
-            this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
-        //}else{
-        /*
-            //out of gas
-            this.gas = 0;
-            this.text.text =  "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
-            this.ghost.animations.stop();
+            this.privacy -= 0.65;
+            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score;
+        }else{
+        
+            //out of privacy
+            this.privacy = 0;
+            this.text.text =  "Privacy: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
+            this.john.animations.stop();
             this.music.loop = false;
-            */
-        //}
+            
+        }
     },
 
 
