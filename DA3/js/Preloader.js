@@ -25,8 +25,8 @@ BasicGame.Preloader.prototype = {
 
 		//	Here we load the rest of the assets our game needs.
 		//	
-		this.load.image('titlePage', 'assets/title.jpg');
-		this.load.image('instructions', 'assets/instructions.jpg');
+		this.load.image('titlePage', 'assets/Title.jpg');
+		this.load.image('instructions', 'assets/Instructions.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		this.load.audio('ghostBusters', ['assets/ghostbusters.mp3']);
