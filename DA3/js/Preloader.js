@@ -34,9 +34,9 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('fart', ['assets/Bronx Cheer.wav']);
 		this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image( 'bg', 'assets/bg.jpg' );
-		this.load.image( 'washer', 'assets/WashingMachine.png' );
-		this.load.image( 'dryer', 'assets/Dryer.png' );
 		//this.load.image('bean10', 'assets/10beans.png');
+		this.load.spritesheet('washer', 'assets/WashingMachine.png', 180, 300);
+		this.load.spritesheet('dryer', 'assets/Dryer.png', 180, 300);
 		this.load.spritesheet('ghost', 'assets/ghost_sprites.png', 300, 300);
 	},
 
