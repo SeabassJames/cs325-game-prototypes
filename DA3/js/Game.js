@@ -142,7 +142,7 @@ BasicGame.Game.prototype = {
             {
                 this.john.body.velocity.x = 150;
 
-                if (facing != 'right')
+                if (this.facing != 'right')
                 {
                     this.john.animations.play('right');
                     this.facing = 'right';
@@ -154,7 +154,7 @@ BasicGame.Game.prototype = {
                 {
                     this.john.animations.play('turn');
 
-                    facing = 'idle';
+                    this.facing = 'idle';
                 }
             }
             
