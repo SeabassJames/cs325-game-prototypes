@@ -47,6 +47,7 @@ BasicGame.Game = function (game) {
     this.dryerState = "off";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
+    this.difficulty = 5;
 };
 
 BasicGame.Game.prototype = {
@@ -133,7 +134,10 @@ BasicGame.Game.prototype = {
                     this.washer.animations.play('open');
                 }
             }else{
-                }else if (this.washerState == "paused"){
+                if (this.game.rnd.integerInRange(0, 100) < this.difficulty){
+                    this.washerState = "paused"
+                }
+                if (this.washerState == "paused"){
                     this.washer.animations.play('paused');
                     if (this.john.body.bottom >= 360 & this.actButton.isDown){
                         this.washerState = "running";
