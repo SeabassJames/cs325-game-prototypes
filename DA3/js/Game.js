@@ -168,12 +168,13 @@ BasicGame.Game.prototype = {
                     this.dryerState = "open";
                     this.dryer.animations.play('open');
                 }
-            }else if (this.dryerState == "off" & this.dryerTime > 0){
+            }else if (this.dryerState == "open" & this.dryerTime > 0){
                 if (this.holdinglaundry == true & this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                     this.dryerState = "running";
                     this.dryer.animations.play('running');
                     this.holdinglaundry = false;
-                }
+                }else{
+                    this.dryer.animations.play('open');
             }else if (this.dryerState == "off"){
                 this.dryer.animations.play('off');
             }else{
