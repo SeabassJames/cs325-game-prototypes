@@ -236,7 +236,7 @@ BasicGame.Game.prototype = {
                 this.music.loop = true;
             }
             this.privacy -= 0.05;
-            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt(this.washerTime * 60);
+            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
         }else{
         
             //out of privacy
