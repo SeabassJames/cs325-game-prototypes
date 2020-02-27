@@ -47,7 +47,7 @@ BasicGame.Game = function (game) {
     this.dryerState = "off";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
-    this.difficulty = 5;
+    this.difficulty = 3;
 };
 
 BasicGame.Game.prototype = {
@@ -129,22 +129,45 @@ BasicGame.Game.prototype = {
             if (this.washerTime == 0){
                 this.washerState = "stopped";
                 this.washer.animations.play('stopped');
-                if (this.john.body.bottom >= 360 & this.actButton.isDown){
+                if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.body.left - 5 & this.john.body.right < this.washer.body.right + 5 & this.actButton.isDown){
                     this.washerState = "open";
                     this.washer.animations.play('open');
                 }
             }else{
-                if (this.game.rnd.integerInRange(0, 100) < this.difficulty){
+                if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                     this.washerState = "paused"
                 }
                 if (this.washerState == "paused"){
                     this.washer.animations.play('paused');
-                    if (this.john.body.bottom >= 360 & this.actButton.isDown){
+                    if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.body.left - 5 & this.john.body.right < this.washer.body.right + 5 & this.actButton.isDown){
                         this.washerState = "running";
                         this.washer.animations.play('running');
                     }
                 }
                 this.washerTime -= 1.0/6;
+            }
+            
+            //dryer
+            //washer
+            if (this.dryerTime == 0){
+                this.dryerState = "stopped";
+                this.dryer.animations.play('stopped');
+                if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.body.left - 5 & this.john.body.right < this.dryer.body.right + 5 & this.actButton.isDown){
+                    this.dryerState = "open";
+                    this.dryer.animations.play('open');
+                }
+            }else{
+                if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
+                    this.dryerState = "paused"
+                }
+                if (this.dryerState == "paused"){
+                    this.dryer.animations.play('paused');
+                    if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.body.left - 5 & this.john.body.right < this.dryer.body.right + 5 & this.actButton.isDown){
+                        this.dryerState = "running";
+                        this.dryer.animations.play('running');
+                    }
+                }
+                this.dryerTime -= 1.0/6;
             }
             
             //horizontal movement
