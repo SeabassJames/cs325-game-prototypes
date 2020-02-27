@@ -132,7 +132,8 @@ BasicGame.Game.prototype = {
         if (this.privacy > 0){
             
             //washer
-            if (this.washerTime == 0){
+            if (this.washerTime <= 0){
+                this.washerTime = 0;
                 this.washerState = "stopped";
                 this.washer.animations.play('stopped');
                 if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.body.left - 5 & this.john.body.right < this.washer.body.right + 5 & this.actButton.isDown){
@@ -152,11 +153,12 @@ BasicGame.Game.prototype = {
                         this.washer.animations.play('running');
                     }
                 }
-                this.washerTime -= 1.0/6;
+                this.washerTime -= 1.0/60;
             }
             
             //dryer
-            if (this.dryerTime == 0){
+            if (this.dryerTime <= 0){
+                this.dryerTime = 0;
                 this.dryerState = "stopped";
                 this.dryer.animations.play('stopped');
                 if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
@@ -179,7 +181,7 @@ BasicGame.Game.prototype = {
                         this.dryer.animations.play('running');
                     }
                 }
-                this.dryerTime -= 1.0/6;
+                this.dryerTime -= 1.0/60;
             }
             
             //curtains
@@ -245,7 +247,6 @@ BasicGame.Game.prototype = {
 
             }
 
-            this.score += 1;
             if (this.score == 9001){
                 this.game.stage.backgroundColor = '#fafa00';
                 this.music.stop();
