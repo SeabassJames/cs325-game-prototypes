@@ -91,7 +91,6 @@ BasicGame.Game.prototype = {
         this.dryer = this.game.add.sprite(495, 55, 'dryer');
         this.curtains = this.game.add.sprite(0, 0, 'curtains');
         this.john = this.game.add.sprite(300, 300, 'john');
-        this.john.anchor.setTo(0.5, 1.0);
 
         //  Enable Arcade Physics for the sprite
         this.game.physics.enable(this.john, Phaser.Physics.ARCADE);
@@ -100,7 +99,7 @@ BasicGame.Game.prototype = {
         this.john.body.allowRotation = false;
         
         // Make sprite smaller
-        this.john.scale.setTo(0.5, 0.5);
+        this.john.scale.setTo(0.3, 0.3);
         
         //animations
         this.john.animations.add('left', [0, 1, 2, 3], 20, true);
