@@ -81,8 +81,8 @@ BasicGame.Game.prototype = {
         //this.game.stage.backgroundColor = '#0173bd';
 
         this.bg = this.game.add.sprite(0, 0, 'bg');
-        this.washer = this.game.add.sprite(315, 55);
-        this.washer = this.game.add.sprite(495, 55);
+        this.washer = this.game.add.sprite(315, 55, 'washer');
+        this.dryer = this.game.add.sprite(495, 55, 'dryer');
         this.john = this.game.add.sprite(300, 300, 'ghost');
         this.john.anchor.setTo(0.5, 1.0);
 
