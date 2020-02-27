@@ -70,6 +70,7 @@ BasicGame.Game.prototype = {
         this.ghost.inputEnabled = true;
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
+        this.bg = this.game.add.sprite(0, 0, 'bg');
         this.music = this.add.audio('ghostBusters');
         this.sfx = this.add.audio('fart');
         this.music.play();
@@ -82,7 +83,6 @@ BasicGame.Game.prototype = {
 
         //this.game.stage.backgroundColor = '#0173bd';
 
-        this.bg = this.game.add.sprite(0, 0, 'bg');
         this.washer = this.game.add.sprite(315, 55, 'washer');
         this.dryer = this.game.add.sprite(495, 55, 'dryer');
         this.john = this.game.add.sprite(300, 300, 'ghost');
@@ -127,7 +127,7 @@ BasicGame.Game.prototype = {
             //horizontal movement
             if (this.cursors.left.isDown & this.john.body.left > 0)
             {
-                this.john.body.velocity.x = -150;
+                this.john.body.velocity.x = -400;
 
                 if (this.facing != 'left')
                 {
@@ -137,7 +137,7 @@ BasicGame.Game.prototype = {
             }
             else if (this.cursors.right.isDown & this.john.body.right < 800)
             {
-                this.john.body.velocity.x = 150;
+                this.john.body.velocity.x = 400;
 
                 if (this.facing != 'right')
                 {
@@ -157,12 +157,12 @@ BasicGame.Game.prototype = {
             //vertical movement
             if (this.cursors.down.isDown & this.john.body.bottom < 600)
             {
-                this.john.body.velocity.y = 150;
+                this.john.body.velocity.y = 350;
 
             }
             else if (this.cursors.up.isDown & this.john.body.bottom > 350)
             {
-                this.john.body.velocity.y = -150;
+                this.john.body.velocity.y = -350;
 
             }
         
