@@ -278,7 +278,7 @@ BasicGame.Game.prototype = {
         
             //out of privacy
             this.privacy = 0;
-            this.text.text =  "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\n\n\nGAME OVER";
+            this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\nDryer time: " + parseInt(this.dryerTime) + ":" + parseInt((this.dryerTime - parseInt(this.dryerTime)) * 60) + "\n\n\nGAME OVER!\nYOU'VE BEEN CELEBRITY SIGHTED!";
             this.john.animations.stop();
             //this.music.loop = false;
             
