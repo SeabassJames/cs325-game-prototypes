@@ -151,8 +151,9 @@ BasicGame.Game.prototype = {
                         this.washerState = "running";
                         this.washer.animations.play('running');
                     }
+                }else{
+                    this.washerTime -= 1.0/60;
                 }
-                this.washerTime -= 1.0/60;
             }
             
             //dryer
@@ -179,8 +180,9 @@ BasicGame.Game.prototype = {
                         this.dryerState = "running";
                         this.dryer.animations.play('running');
                     }
+                }else{
+                    this.dryerTime -= 1.0/60;
                 }
-                this.dryerTime -= 1.0/60;
             }
             
             //curtains
