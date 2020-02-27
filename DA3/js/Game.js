@@ -100,8 +100,8 @@ BasicGame.Game.prototype = {
         this.john.animations.add('turn', [2, 5], 20, true);
         this.john.animations.add('right', [3,4], 20, true);
         
-        this.cursors = game.input.keyboard.createCursorKeys();
-        this.actButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+        this.actButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
 
     update: function () {
