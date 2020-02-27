@@ -185,7 +185,7 @@ BasicGame.Game.prototype = {
             //curtains
             if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                 this.curtainState = "open";
-                this.curtains.animation.play('open');
+                this.curtains.animations.play('open');
             }
             if (this.john.body.left <= 90 & this.actButton.isDown){
                 this.curtainState = "closed";
