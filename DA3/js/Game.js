@@ -42,9 +42,9 @@ BasicGame.Game = function (game) {
     // Center it in X, and position its top 15 pixels from the top of the world.
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
-    this.bean10 = null;
     this.washerState = "paused";
     this.dryerState = "off";
+    this.curtainState = "closed";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
     this.difficulty = 3;
@@ -88,6 +88,7 @@ BasicGame.Game.prototype = {
 
         this.washer = this.game.add.sprite(315, 55, 'washer');
         this.dryer = this.game.add.sprite(495, 55, 'dryer');
+        this.curtains = this.game.add.sprite(0, 0, 'curtains');
         this.john = this.game.add.sprite(300, 300, 'john');
         this.john.anchor.setTo(0.5, 1.0);
 
@@ -98,7 +99,7 @@ BasicGame.Game.prototype = {
         this.john.body.allowRotation = false;
         
         // Make sprite smaller
-        this.john.scale.setTo(0.3, 0.3);
+        this.john.scale.setTo(0.5 0.5);
         
         //animations
         this.john.animations.add('left', [0, 1, 2, 3], 20, true);
@@ -114,6 +115,9 @@ BasicGame.Game.prototype = {
         this.dryer.animations.add('paused', [2], 20, true);
         this.dryer.animations.add('off', [3], 20, true);
         this.dryer.animations.add('open', [4], 20, true);
+        
+        this.curtains.animations.add('closed', [0], 20, true);
+        this.curtains.animations.add('open', [1], 20, true);
         
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.actButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -148,7 +152,6 @@ BasicGame.Game.prototype = {
             }
             
             //dryer
-            //washer
             if (this.dryerTime == 0){
                 this.dryerState = "stopped";
                 this.dryer.animations.play('stopped');
@@ -168,6 +171,25 @@ BasicGame.Game.prototype = {
                     }
                 }
                 this.dryerTime -= 1.0/6;
+            }
+            
+            //curtains
+            if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
+                this.curtainState = "open";
+                this.curtains.animation.play('open')
+            }
+            if (this.john.body.left <= 90 & this.actButton.isDown){
+                this.curtainState = "closed";
+                this.curtains.animations.play('closed');
+            }else if (this.curtainState == "open"){
+                this.privacy -= 1
+            }else{
+                this.privacy += 0.1;
+            }
+            
+            //comics
+            if (this.john.body.left >= 700 & this.actButton.isDown){
+                this.score += 1;
             }
             
             //horizontal movement
@@ -211,21 +233,6 @@ BasicGame.Game.prototype = {
                 this.john.body.velocity.y = -350;
 
             }
-        /*
-            //beans
-            if (this.bean10 == null){
-                this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
-            }
-            if (this.checkOverlap(this.bean10, this.john)){
-                this.gas += 10;
-                if (this.gas >100){
-                    this.gas = 100;
-                }
-                this.bean10.destroy();
-                this.bean10 = null;
-                this.sfx.play();
-            }
-            */
 
             this.score += 1;
             if (this.score == 9001){
@@ -236,7 +243,7 @@ BasicGame.Game.prototype = {
                 this.music.loop = true;
             }
             this.privacy -= 0.05;
-            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
+            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
         }else{
         
             //out of privacy
