@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         //this.sfx = this.add.audio('fart');
         //this.music.play();
         //this.music.loop = true;
-        this.text = this.game.add.text( 100, 15, "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
+        this.text = this.game.add.text( 100, 15, "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
         
         
         
@@ -255,12 +255,12 @@ BasicGame.Game.prototype = {
                 this.music.loop = true;
             }
             this.privacy -= 0.05;
-            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
+            this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
         }else{
         
             //out of privacy
             this.privacy = 0;
-            this.text.text =  "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\n\n\nGAME OVER";
+            this.text.text =  "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\n\n\nGAME OVER";
             this.john.animations.stop();
             this.music.loop = false;
             
