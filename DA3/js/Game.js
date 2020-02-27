@@ -131,7 +131,7 @@ BasicGame.Game.prototype = {
             this.john.body.velocity.x = 0;
             this.john.body.velocity.y = 0;
             //horizontal movement
-            if (this.cursors.left.isDown)
+            if (this.cursors.left.isDown & this.john.body.left > 0)
             {
                 this.john.body.velocity.x = -150;
 
@@ -141,7 +141,7 @@ BasicGame.Game.prototype = {
                     this.facing = 'left';
                 }
             }
-            else if (this.cursors.right.isDown)
+            else if (this.cursors.right.isDown & this.john.body.right < 800)
             {
                 this.john.body.velocity.x = 150;
 
@@ -161,12 +161,12 @@ BasicGame.Game.prototype = {
                 }
             }
             //vertical movement
-            if (this.cursors.down.isDown)
+            if (this.cursors.down.isDown & this.john.body.bottom < 600)
             {
                 this.john.body.velocity.y = 150;
 
             }
-            else if (this.cursors.up.isDown)
+            else if (this.cursors.up.isDown & this.john.body.bottom > 350)
             {
                 this.john.body.velocity.y = -150;
 
