@@ -185,13 +185,13 @@ BasicGame.Game.prototype = {
             //curtains
             if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                 this.curtainState = "open";
-                this.curtains.animation.play('open')
+                this.curtains.animation.play('open');
             }
             if (this.john.body.left <= 90 & this.actButton.isDown){
                 this.curtainState = "closed";
                 this.curtains.animations.play('closed');
             }else if (this.curtainState == "open"){
-                this.privacy -= 1
+                this.privacy -= 1;
             }else{
                 this.privacy += 0.1;
             }
