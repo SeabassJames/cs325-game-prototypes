@@ -74,11 +74,11 @@ BasicGame.Game.prototype = {
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
         this.bg = this.game.add.sprite(0, 0, 'bg');
-        this.music = this.add.audio('ghostBusters');
-        this.sfx = this.add.audio('fart');
-        this.music.play();
-        this.music.loop = true;
-        this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
+        //this.music = this.add.audio('ghostBusters');
+        //this.sfx = this.add.audio('fart');
+        //this.music.play();
+        //this.music.loop = true;
+        //this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
         
         
         
@@ -88,7 +88,7 @@ BasicGame.Game.prototype = {
 
         this.washer = this.game.add.sprite(315, 55, 'washer');
         this.dryer = this.game.add.sprite(495, 55, 'dryer');
-        this.john = this.game.add.sprite(300, 300, 'ghost');
+        this.john = this.game.add.sprite(300, 300, 'john');
         this.john.anchor.setTo(0.5, 1.0);
 
         //  Enable Arcade Physics for the sprite
@@ -101,9 +101,9 @@ BasicGame.Game.prototype = {
         this.john.scale.setTo(0.3, 0.3);
         
         //animations
-        this.john.animations.add('left', [0, 1], 20, true);
-        this.john.animations.add('turn', [2, 5], 20, true);
-        this.john.animations.add('right', [3,4], 20, true);
+        this.john.animations.add('left', [0, 1, 2, 3], 20, true);
+        this.john.animations.add('turn', [4], 20, true);
+        this.john.animations.add('right', [5,6, 7, 8], 20, true);
         
         this.washer.animations.add('running', [0,1], 20, true);
         this.washer.animations.add('paused', [2], 20, true);
@@ -181,7 +181,7 @@ BasicGame.Game.prototype = {
                     this.facing = 'left';
                 }
             }
-            else if (this.cursors.right.isDown & this.john.body.right < 800)
+            else if (this.cursors.right.isDown & this.john.body.right < 730)
             {
                 this.john.body.velocity.x = 400;
 
