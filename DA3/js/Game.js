@@ -128,6 +128,9 @@ BasicGame.Game.prototype = {
                 }
             }
             */
+            this.john.body.velocity.x = 0;
+            this.john.body.velocity.y = 0;
+            //horizontal movement
             if (this.cursors.left.isDown)
             {
                 this.john.body.velocity.x = -150;
@@ -157,7 +160,18 @@ BasicGame.Game.prototype = {
                     this.facing = 'idle';
                 }
             }
-            
+            //vertical movement
+            if (this.cursors.down.isDown)
+            {
+                this.john.body.velocity.y = 150;
+
+            }
+            else if (this.cursors.up.isDown)
+            {
+                this.john.body.velocity.y = -150;
+
+            }
+        
             //beans
             if (this.bean10 == null){
                 this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
