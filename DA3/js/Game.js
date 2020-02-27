@@ -254,7 +254,7 @@ BasicGame.Game.prototype = {
                 this.john.body.velocity.y = -350;
 
             }
-
+            /*
             if (this.score == 9001){
                 this.game.stage.backgroundColor = '#fafa00';
                 this.music.stop();
@@ -262,6 +262,7 @@ BasicGame.Game.prototype = {
                 this.music.play();
                 this.music.loop = true;
             }
+            */
             this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\nDryer time: " + parseInt(this.dryerTime) + ":" + parseInt((this.dryerTime - parseInt(this.dryerTime)) * 60);
             if (this.dryerTime <= 0){
                 this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nYour laundry is all done!";
