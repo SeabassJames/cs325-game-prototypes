@@ -142,6 +142,8 @@ BasicGame.Game.prototype = {
                     this.holdinglaundry = true;
                     this.john.animations.play('laundry');
                 }
+            }else if (this.washerState == "open"){
+                  
             }else{
                 if (this.game.rnd.integerInRange(0, 1000) < this.difficulty){
                     this.washerState = "paused"
