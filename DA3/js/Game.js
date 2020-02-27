@@ -45,6 +45,8 @@ BasicGame.Game = function (game) {
     this.bean10 = null;
     this.washerState = "running";
     this.dryerState = "off";
+    this.washerTime = 30.00;
+    this.dryerTime = 60.00;
 };
 
 BasicGame.Game.prototype = {
@@ -118,12 +120,31 @@ BasicGame.Game.prototype = {
 
     update: function () {
         
+        this.john.body.velocity.x = 0;
+        this.john.body.velocity.y = 0;
         if (this.privacy > 0){
             
             //washer
+            if (this.washerTime == 0){
+                this.washerState = "stopped";
+                this.washer.animations.play('stopped');
+                if (this.john.body.bottom >= 360 & this.actButton.isDown){
+                    this.washerState = "open";
+                    this.washer.animations.play('open');
+                }
+            }else{
+                if (this.washerState == "running"){
+                    this.washer.animations.play('running');
+                }else if (this.washerState == "paused"){
+                    this.washer.animations.play('paused');
+                }else if (this.washerState == "stopped"){
+                    this.washer.animations.play('stopped');
+                }else if (this.washerState == "open"){
+                    this.washer.animations.play('open');
+                }
+                this.washerTime -= 1.0/6;
+            }
             
-            this.john.body.velocity.x = 0;
-            this.john.body.velocity.y = 0;
             //horizontal movement
             if (this.cursors.left.isDown & this.john.body.left > 0)
             {
@@ -190,7 +211,7 @@ BasicGame.Game.prototype = {
                 this.music.loop = true;
             }
             this.privacy -= 0.65;
-            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score;
+            this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt(this.washerTime * 60);
         }else{
         
             //out of privacy
