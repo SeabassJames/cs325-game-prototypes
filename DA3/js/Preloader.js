@@ -37,7 +37,9 @@ BasicGame.Preloader.prototype = {
 		//this.load.image('bean10', 'assets/10beans.png');
 		this.load.spritesheet('washer', 'assets/WashingMachine.png', 180, 300);
 		this.load.spritesheet('dryer', 'assets/Dryer.png', 180, 300);
-		this.load.spritesheet('ghost', 'assets/ghost_sprites.png', 300, 300);
+		this.load.spritesheet('curtains', 'assets/Curtains.png', 150, 600);
+		//this.load.spritesheet('ghost', 'assets/ghost_sprites.png', 300, 300);
+		this.load.spritesheet('john', 'assets/John.png', 400, 650);
 	},
 
 	create: function () {
