@@ -47,7 +47,7 @@ BasicGame.Game = function (game) {
     this.curtainState = "closed";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
-    this.difficulty = 3;
+    this.difficulty = 5;
     this.holdinglaundry = false;
 };
 
@@ -195,7 +195,7 @@ BasicGame.Game.prototype = {
                 this.curtains.animations.play('closed');
             }
             if (this.curtainState == "open"){
-                this.privacy -= 0.1;
+                this.privacy -= 0.2;
                 if (this.privacy < 0){
                     this.privacy = 0;
                 }
@@ -273,7 +273,7 @@ BasicGame.Game.prototype = {
             this.privacy = 0;
             this.text.text =  "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\n\n\nGAME OVER";
             this.john.animations.stop();
-            this.music.loop = false;
+            //this.music.loop = false;
             
         }
     },
