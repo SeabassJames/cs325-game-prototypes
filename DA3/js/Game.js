@@ -32,8 +32,8 @@ BasicGame.Game = function (game) {
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
-    this.ghost = null;
-    this.facing = 'turn';
+    this.john = null;
+    this.facing = 'idle';
     this.gas = 100.0;
     //this.spawntimer = 0;
     this.bg = null;
@@ -78,32 +78,39 @@ BasicGame.Game.prototype = {
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.game.stage.backgroundColor = '#0173bd';
+        //this.game.stage.backgroundColor = '#0173bd';
 
-        this.ghost = this.game.add.sprite(300, 300, 'ghost');
-        this.ghost.anchor.setTo(0.5, 0.5);
+        this.bg = this.game.add.sprite(0, 0, 'bg');
+        this.washer = this.game.add.sprite(315, 55);
+        this.washer = this.game.add.sprite(495, 55);
+        this.john = this.game.add.sprite(300, 300, 'ghost');
+        this.john.anchor.setTo(0.5, 1.0);
 
         //  Enable Arcade Physics for the sprite
-        this.game.physics.enable(this.ghost, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.john, Phaser.Physics.ARCADE);
 
         //  Tell it we don't want physics to manage the rotation
-        this.ghost.body.allowRotation = false;
+        this.john.body.allowRotation = false;
         
         // Make sprite smaller
-        this.ghost.scale.setTo(0.3, 0.3);
+        this.john.scale.setTo(0.3, 0.3);
         
         //animations
-        this.ghost.animations.add('left', [0, 1], 20, true);
-        this.ghost.animations.add('turn', [2, 5], 20, true);
-        this.ghost.animations.add('right', [3,4], 20, true);
+        this.john.animations.add('left', [0, 1], 20, true);
+        this.john.animations.add('turn', [2, 5], 20, true);
+        this.john.animations.add('right', [3,4], 20, true);
         
+        this.cursors = game.input.keyboard.createCursorKeys();
+        this.actButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
 
     update: function () {
-        if (this.gas > 0){
+        
+        //if (this.gas > 0){
             //Move ghost towards the cursor
-            this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
+            //this.game.physics.arcade.moveToPointer(this.ghost, 500, this.game.input.activePointer, 80);
             //update animation based on deltaX
+        /*
             if (this.ghost.deltaX > 0.7){
                 if (this.facing != 'right'){
                     this.ghost.animations.play('right');
@@ -120,12 +127,42 @@ BasicGame.Game.prototype = {
                     this.facing = 'turn'; 
                 }
             }
+            */
+            if (this.cursors.left.isDown)
+            {
+                this.john.body.velocity.x = -150;
+
+                if (this.facing != 'left')
+                {
+                    this.john.animations.play('left');
+                    this.facing = 'left';
+                }
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.john.body.velocity.x = 150;
+
+                if (facing != 'right')
+                {
+                    this.john.animations.play('right');
+                    this.facing = 'right';
+                }
+            }
+            else
+            {
+                if (this.facing != 'idle')
+                {
+                    this.john.animations.play('turn');
+
+                    facing = 'idle';
+                }
+            }
             
             //beans
             if (this.bean10 == null){
                 this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
             }
-            if (this.checkOverlap(this.bean10, this.ghost)){
+            if (this.checkOverlap(this.bean10, this.john)){
                 this.gas += 10;
                 if (this.gas >100){
                     this.gas = 100;
@@ -146,13 +183,15 @@ BasicGame.Game.prototype = {
             }
             this.gas -= 0.65;
             this.text.text = "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score;
-        }else{
+        //}else{
+        /*
             //out of gas
             this.gas = 0;
             this.text.text =  "Gas: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
             this.ghost.animations.stop();
             this.music.loop = false;
-        }
+            */
+        //}
     },
 
 
