@@ -194,7 +194,7 @@ BasicGame.Game.prototype = {
                 this.curtainState = "closed";
                 this.curtains.animations.play('closed');
             }else if (this.curtainState == "open"){
-                this.privacy -= 1;
+                this.privacy -= 0.5;
             }else{
                 this.privacy += 0.1;
             }
@@ -255,7 +255,6 @@ BasicGame.Game.prototype = {
                 this.music.play();
                 this.music.loop = true;
             }
-            this.privacy -= 0.05;
             this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60);
         }else{
         
