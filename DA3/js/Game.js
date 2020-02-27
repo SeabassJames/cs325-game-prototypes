@@ -188,7 +188,7 @@ BasicGame.Game.prototype = {
                 this.john.body.velocity.y = -350;
 
             }
-        
+        /*
             //beans
             if (this.bean10 == null){
                 this.bean10 = this.game.add.sprite(this.game.rnd.integerInRange(0, 700), this.game.rnd.integerInRange(0, 500), 'bean10');
@@ -202,7 +202,7 @@ BasicGame.Game.prototype = {
                 this.bean10 = null;
                 this.sfx.play();
             }
-            
+            */
 
             this.score += 1;
             if (this.score == 9001){
@@ -212,7 +212,7 @@ BasicGame.Game.prototype = {
                 this.music.play();
                 this.music.loop = true;
             }
-            this.privacy -= 0.65;
+            this.privacy -= 0.05;
             this.text.text = "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt(this.washerTime * 60);
         }else{
         
