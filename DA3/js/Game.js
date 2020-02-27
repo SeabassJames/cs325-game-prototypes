@@ -136,7 +136,7 @@ BasicGame.Game.prototype = {
                 this.washerTime = 0;
                 this.washerState = "stopped";
                 this.washer.animations.play('stopped');
-                if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.body.left - 5 & this.john.body.right < this.washer.body.right + 5 & this.actButton.isDown){
+                if (this.john.body.bottom <= 370 & this.john.body.left > this.washer.body.left - 10 & this.john.body.right < this.washer.body.right + 10 & this.actButton.isDown){
                     this.washerState = "open";
                     this.washer.animations.play('open');
                     this.holdinglaundry = true;
@@ -148,7 +148,7 @@ BasicGame.Game.prototype = {
                 }
                 if (this.washerState == "paused"){
                     this.washer.animations.play('paused');
-                    if (this.john.body.bottom <= 360 & this.john.body.left > this.washer.left - 5 & this.john.body.right < this.washer.right + 5 & this.actButton.isDown){
+                    if (this.john.body.bottom <= 370 & this.john.body.left > this.washer.left - 10 & this.john.body.right < this.washer.right + 10 & this.actButton.isDown){
                         this.washerState = "running";
                         this.washer.animations.play('running');
                     }
@@ -161,12 +161,12 @@ BasicGame.Game.prototype = {
                 this.dryerTime = 0;
                 this.dryerState = "stopped";
                 this.dryer.animations.play('stopped');
-                if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
+                if (this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                     this.dryerState = "open";
                     this.dryer.animations.play('open');
                 }
             }else if (this.dryerState == "open"){
-                if (this.holdinglaundry == true & this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
+                if (this.holdinglaundry == true & this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                     this.dryerState = "running";
                     this.dryer.animations.play('running');
                 }
@@ -176,7 +176,7 @@ BasicGame.Game.prototype = {
                 }
                 if (this.dryerState == "paused"){
                     this.dryer.animations.play('paused');
-                    if (this.john.body.bottom <= 360 & this.john.body.left > this.dryer.left - 5 & this.john.body.right < this.dryer.right + 5 & this.actButton.isDown){
+                    if (this.john.body.bottom <= 370 & this.john.body.left > this.dryer.left - 10 & this.john.body.right < this.dryer.right + 10 & this.actButton.isDown){
                         this.dryerState = "running";
                         this.dryer.animations.play('running');
                     }
@@ -199,7 +199,7 @@ BasicGame.Game.prototype = {
             }
             
             //comics
-            if (this.john.body.left >= 700 & this.actButton.isDown){
+            if (this.john.body.right >= 700 & this.actButton.isDown){
                 this.score += 1;
             }
             
