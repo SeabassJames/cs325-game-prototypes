@@ -43,7 +43,7 @@ BasicGame.Game = function (game) {
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
     this.bean10 = null;
-    this.washerState = "running";
+    this.washerState = "paused";
     this.dryerState = "off";
     this.washerTime = 30.00;
     this.dryerTime = 60.00;
@@ -133,14 +133,12 @@ BasicGame.Game.prototype = {
                     this.washer.animations.play('open');
                 }
             }else{
-                if (this.washerState == "running"){
-                    this.washer.animations.play('running');
                 }else if (this.washerState == "paused"){
                     this.washer.animations.play('paused');
-                }else if (this.washerState == "stopped"){
-                    this.washer.animations.play('stopped');
-                }else if (this.washerState == "open"){
-                    this.washer.animations.play('open');
+                    if (this.john.body.bottom >= 360 & this.actButton.isDown){
+                        this.washerState = "running";
+                        this.washer.animations.play('running');
+                    }
                 }
                 this.washerTime -= 1.0/6;
             }
