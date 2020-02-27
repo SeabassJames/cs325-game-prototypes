@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         //this.sfx = this.add.audio('fart');
         //this.music.play();
         //this.music.loop = true;
-        //this.text = this.game.add.text( 100, 15, "Gas: " + this.gas + "\nScore: " + this.score, this.style );
+        this.text = this.game.add.text( 100, 15, "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
         
         
         
@@ -259,7 +259,7 @@ BasicGame.Game.prototype = {
         
             //out of privacy
             this.privacy = 0;
-            this.text.text =  "Privacy: " + parseFloat(this.gas).toFixed(2) + "\nScore: " + this.score + "\n\n\nGAME OVER";
+            this.text.text =  "Privacy: " + parseFloat(this.privacy).toFixed(2) + "\nScore: " + this.score + "\nPrivacy: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\n\n\nGAME OVER";
             this.john.animations.stop();
             this.music.loop = false;
             
