@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>Digital Assignment 3: FFAotGWGLaDBTTAWW</title>
+	<title>Digital Assignment 5: Polyis</title>
 	<script src="js/phaser.min.js"></script>
 	<!-- Boot.js must come first since it creates the BasicGame object
 	that stores all the states. -->
@@ -29,11 +29,11 @@ body
 <body>
 <div id="game"></div>
 <div id="readme">
-<h2>John Carbuckle Just Wants to Do His Laundry and Draw His Cartoons, but His Cats Won't Let Him</h2>
+<h2>Polyis</h2>
 
 <ul>
 <li><strong>Originality:</strong>
-TBA
+Having polyominoes of various sizes and allowing players to choose which polyominoes appear during play
 </li>
 
 <li><strong>Technical Merit:</strong>
@@ -63,69 +63,65 @@ Did you make your prototype assets from scratch? Did you borrow them? Cite your 
 Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
 <ul>
 <li>TBA</li>
-<li>The code for this example is adapted from the <a href="https://github.com/photonstorm/phaser/tree/v2.6.2/resources/Project%20Templates/Basic">Phaser Basic Project Template</a></li>
-<li>The code for checking overlap: <a href = "https://www.phaser.io/examples/v2/sprites/overlap-without-physics">https://www.phaser.io/examples/v2/sprites/overlap-without-physics</a></li>
+<li>This game is most similar to Tetris</li>
 </ul>
 </li>
-
+	
 <li><strong>High Concept:</strong>
 A one-sentence summary of your game.<br>
-Celebrity cartoonist John Carbuckle just wants to do his laundry and draw his cartoons, but his cats won't let him. Try to do your laundry, draw your cartoons, and keep your blinds closed while your cats try to stop you.
+Choose a range of sizes of polyominoes to play with, then fill entire rows to clear them as the polyominoes fall to avoid them stacking up to the top!
 </li>
 
 <li><strong>Theme:</strong>
 State which of the Storymatic themes you used.<br>
-Cartoonist<br>
-Person with lots and lots of cats<br>
-Celebrity sighting<br>
-Laundromat
-</li>
-
-<li><strong>Mandated Variety:</strong>
-State which input, randomness, genre, and play style you used in this prototype.
-TBATBA
-Input: K
-Randomness: 
-Genre: Overhead?
-Play Style: Collector
+TBA?
 </li>
 
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?<br>
 TBA
-Testing multiple game states, item collection, random placement of items, and game over conditions
+Spawning, controlling, and stacking multiple minoes (square objects) and detecting when they are too high<br>
+Having multiple objects controlled simultaneously yet differently (multiple squares in one polyomno)
+Switching player control from one object to another<br>
 </li>
 
 <li><strong>Player Experience Goals:</strong>
 What experience do you want players to have when playing your game?<br>
-TBA
+A familiarity for Tetris with adjustable different difficulties depending on which polyominoes are in play
 </li>
 
 <li><strong>Gameplay:</strong>
 A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.<br>
-TBA
+Before starting the main gameplay, players may choose from a menu which sizes/shapes of pieces may appear.<br>
+Players may rotate polyominoes clockwise or counterclockwise, move polyominoes left or right, increase fall speed of polyominoes, instantly drop a polyomino into its landing position, and swap a polyomino into/out of storage.<br>
+If an entire row of squares is filled, that row gets removed, the player earns points, and the above pieces fall to fill the space left by the cleared row.<br>
+If a piece lands above the upper barrier, the player loses and gets a game over.
 </li>
 
 <li><strong>Strategies:</strong>
 What player strategies do you expect will be effective at playing this game?<br>
-TBA
+<ul>
+<li>Stacking polyominoes on the left and right sides while leaving the middle open</li>
+<li>Keeping a line piece in storage until there is a narrow gap in which the line piece may clear a number of rows corresponding to the length of the line piece</li>  
+<li>Keeping a generally good polyomino which can fit in many different positions, such as a T-shaped tertromino, in storage until the player needs it, such as when they receive a polyomino which does not fit well into the current layout</li>
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
 A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
 How will the dramatic tension interact with the gameplay tension?<br>
-TBA<br>
-You are John Carbuckle, celebrity cartoonist. You are trying to draw some cartoons and do some laundry in private, but your cats, Marthield, Roynald, Lucield, and Chromald are causing trouble by messing with the laundry machines and windows.
+The game is currently planned to be abstract, but a story may be added later.
 </li>
 
 <li><strong>Target Audience:</strong>
 A single sentence that describes the demographic you're trying to reach.<br>
-TBA
+The craftsman player type<br>
+People who enjoy puzzles of various difficulties under time constraints<br>
+People who enjoy Tetris but want something new 
 </li>
 
 <li><strong>Play Time:</strong>
 How long does your game take to play?<br>
-TBA
+Depending on player skill level and RNG of dropped polyominoes, anywhere between a few seconds and forever
 </li>
 
 </ul>
