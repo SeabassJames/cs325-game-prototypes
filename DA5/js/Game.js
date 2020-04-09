@@ -181,7 +181,7 @@ BasicGame.Game.prototype = {
                     //fill in space
                     space.frame = mino.frame;
                     //remove active mino
-                    mino.kill();
+                    //mino.kill();
                 }
             });
         });
@@ -195,14 +195,15 @@ BasicGame.Game.prototype = {
         //spawns a mino
         //var minosize = Math.floor(Math.random() * (max - min + 1)) + min;
         //this.activegroup.kill();
-        var mino = this.activegroup.getFirstExists(true);
-
-        if (mino){  //spawn mino at starting point
-            mino.revive();
-            mino.x = 760;
-            mino.y = 10;
-            mino.visible = true;
-        }
+        //var mino = this.activegroup.getFirstExists(true);
+        this.activegroup.forEach(function(mino){
+            //if (mino){  //spawn mino at starting point
+                mino.revive();
+                mino.x = 760;
+                mino.y = 10;
+                mino.visible = true;
+            //}
+        });
         this.activegroup.visible = true;
         
     },
