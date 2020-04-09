@@ -52,7 +52,7 @@ BasicGame.Game.prototype = {
     
     create: function () {
 
-    map = game.add.tilemap('grid');
+    map = this.add.tilemap('grid');
 
     map.addTilesetImage('grid', 'minoes');
 
