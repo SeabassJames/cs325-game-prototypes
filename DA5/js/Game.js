@@ -203,6 +203,7 @@ BasicGame.Game.prototype = {
             mino.y = 10;
             mino.visible = true;
         }
+        this.activegroup.visible = true;
         
     },
     
