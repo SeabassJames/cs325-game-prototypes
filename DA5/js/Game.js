@@ -187,8 +187,8 @@ BasicGame.Game.prototype = {
         var ys = [];
         var color;
         this.activegroup.forEach(function(mino){
-            xs.append(mino.x);
-            ys.append(mino.y);
+            xs.push(mino.x);
+            ys.push(mino.y);
             color = mino.frame;
         });
         this.gridgroup.forEach(function(space){ //for each space on the grid
@@ -255,8 +255,8 @@ BasicGame.Game.prototype = {
             var bottoms = [];
             var lefts = [];
             this.activegroup.forEach(function(mino){
-                bottoms.append(mino.bottom);
-                lefts.append(mino.left);
+                bottoms.pus(mino.bottom);
+                lefts.push(mino.left);
             });
             this.gridgroup.forEach(function(space){ //checks every space on grid
                 if (space.frame > 3){ //if space is not empty
