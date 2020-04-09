@@ -194,8 +194,8 @@ BasicGame.Game.prototype = {
         
         //spawns a mino
         //var minosize = Math.floor(Math.random() * (max - min + 1)) + min;
-        this.activegroup.kill();
-        var mino = this.activegroup.getFirstExists(false);
+        //this.activegroup.kill();
+        var mino = this.activegroup.getFirstExists(true);
 
         if (mino){  //spawn mino at starting point
             mino.revive();
