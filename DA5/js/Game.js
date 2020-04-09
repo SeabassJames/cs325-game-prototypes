@@ -79,15 +79,15 @@ BasicGame.Game.prototype = {
         this.bg = this.game.add.sprite(0, 0, 'bg');
         
         //make a group to hold minoes in grid
-        var gridgroup = this.add.group();
+        this.gridgroup = this.add.group();
         
         //create sprites
-        gridgroup.createMultiple(230, 'minoes', [0], true);
+        this.gridgroup.createMultiple(230, 'minoes', [0], true);
         
         //align sprites into rows of 10
-        gridgroup.align(10, -1, 40, 40);
-        gridgroup.x = 600;
-        gridgroup.y = -70;
+        this.gridgroup.align(10, -1, 40, 40);
+        this.gridgroup.x = 600;
+        this.gridgroup.y = -70;
         //gridgroup.filled = false;
         
         //this.music = this.add.audio('ghostBusters');
@@ -123,12 +123,12 @@ BasicGame.Game.prototype = {
                         */
         //var gridlocation = [600, -70]
         //starting square for minoes to spawn
-        var startsquare = [4,2];
+        this.startsquare = [4,2];
         //representing up to 5 active minoes
-        var activegroup = this.add.group();
+        this.activegroup = this.add.group();
         // allocate active minoes
         //create sprites
-        activegroup.createMultiple(230, 'minoes', [0], false);
+        this.activegroup.createMultiple(230, 'minoes', [0], false);
         
         //a lot of sprites
         //var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
@@ -172,8 +172,8 @@ BasicGame.Game.prototype = {
     },
     
     stopMino: function(){
-        gridgroup.forEach(function(space){ //for each space on the grid
-            activegroup.forEach(function(mino){
+        this.gridgroup.forEach(function(space){ //for each space on the grid
+            this.activegroup.forEach(function(mino){
                 if (mino.x == space.x & mino.y == space.y){ //if mino is overlapping space
                     //fill in space
                     space.frame = mino.frame;
@@ -191,8 +191,8 @@ BasicGame.Game.prototype = {
         
         //spawns a mino
         //var minosize = Math.floor(Math.random() * (max - min + 1)) + min;
-        activegroup.kill();
-        var mino = activegroup.getFirstExists(false);
+        this.activegroup.kill();
+        var mino = this.activegroup.getFirstExists(false);
 
         if (mino){  //spawn mino at starting point
             mino.revive();
@@ -204,9 +204,9 @@ BasicGame.Game.prototype = {
     
     fall: function(){
         var cleartofall = true;
-        gridgroup.forEach(function(space){
+        this.gridgroup.forEach(function(space){
             if (space.frame > 3){ //if space is not empty
-                activegroup.forEach(function(mino){
+                this.activegroup.forEach(function(mino){
                     if (space.top == mino.bottom){  //if filled space is below active mino
                         cleartofall = false;
                     }
@@ -216,7 +216,7 @@ BasicGame.Game.prototype = {
         if (!cleartofall){
             this.stopMino();
         }else{
-            activegroup.forEach(function(mino){
+            this.activegroup.forEach(function(mino){
                 mino.y -= 40; //fall by 1 space
             });
         }
