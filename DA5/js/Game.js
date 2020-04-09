@@ -69,11 +69,12 @@ BasicGame.Game.prototype = {
         
         
         
+        
         // When you click on the sprite, you go back to the MainMenu.
         this.ghost.inputEnabled = true;
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
-        
+        this.physics.startSystem(Phaser.Physics.ARCADE);
         
         //load background image
         this.bg = this.game.add.sprite(0, 0, 'bg');
