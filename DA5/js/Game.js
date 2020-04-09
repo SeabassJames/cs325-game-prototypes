@@ -47,7 +47,7 @@ BasicGame.Game = function (game) {
     // Center it in X, and position its top 15 pixels from the top of the world.
     this.style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
-    this.falltimer = 100;
+    this.falltimer = 50;
     this.gameOver = false;
 };
 
@@ -144,7 +144,7 @@ BasicGame.Game.prototype = {
             this.falltimer -= 1;
             if (this.falltimer <=0){
                 this.fall();
-                this.falltimer = 100;
+                this.falltimer = 50;
             }
         }
         
