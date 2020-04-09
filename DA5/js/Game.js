@@ -157,7 +157,7 @@ BasicGame.Game.prototype = {
                 this.falltimer = 20;
             }
         }
-        
+        this.world.bringToTop(this.activegroup);
     },
 
 
