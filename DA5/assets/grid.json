@@ -1,4 +1,4 @@
-//Source: https://github.com/photonstorm/phaser-examples/blob/master/examples/tilemaps/paint%20tiles.js
+
 { "height":40,
  "layers":[
         {
@@ -59,4 +59,5 @@
  "tilewidth":40,
  "version":1,
  "width":40
+ //Source: https://github.com/photonstorm/phaser-examples/blob/master/examples/tilemaps/paint%20tiles.js
 }
