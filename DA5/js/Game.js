@@ -35,6 +35,7 @@ BasicGame.Game = function (game) {
     //random int: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
     //move to another group: https://phaser.io/examples/v2/groups/move-to-another-group
     //debugging: https://phaser.io/examples/v2/debug/debug-display
+    //call all animations: https://phaser.io/examples/v2/groups/call-all-animations
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
@@ -135,8 +136,12 @@ BasicGame.Game.prototype = {
         this.activegroup.x = 760;
         this.activegroup.y = 10;
         
-        //a lot of sprites
-        //var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
+        //  Now using the power of callAll we can add the same animation to all coins in the group:
+        this.gridgroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4, 5], 10, true);
+        this.activegroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4, 5], 10, true);
+
+        //  And play them
+        this.activegroup.callAll('animations.play', 'animations', 'clear');
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -189,6 +194,8 @@ BasicGame.Game.prototype = {
         });
         
         this.spawnMino();
+        
+        this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     
@@ -205,10 +212,12 @@ BasicGame.Game.prototype = {
                 mino.y = 10;
                 mino.visible = true;
                 mino.frame = 5;
+                
             //}
         });
         this.activegroup.visible = true;
         
+        this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     fall: function(){
@@ -243,6 +252,7 @@ BasicGame.Game.prototype = {
             });
         }
         
+        this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     render: function(){
