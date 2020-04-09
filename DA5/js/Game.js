@@ -1,7 +1,7 @@
 "use strict";
 
 BasicGame.Game = function (game) {
-    
+
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
     /*
     this.game;      //  a reference to the currently running game (Phaser.Game)
@@ -25,93 +25,118 @@ BasicGame.Game = function (game) {
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     */
     
-    //Tilemaps: https://github.com/photonstorm/phaser-examples/blob/master/examples/tilemaps/paint%20tiles.js
+    //follow cursor: http://phaser.io/examples/v2/arcade-physics/accelerate-to-pointer
+    //animations: https://github.com/SeabassJames/cs325-game-prototypes/blob/master/HW0/js/main.js
+    //text: https://phaser.io/examples/v2/text/text-events
+    //overlap: https://www.phaser.io/examples/v2/sprites/overlap-without-physics
+    //groups: https://phaser.io/examples/v2/groups/align-sprites-to-grid
+    //for each in groups: https://phaser.io/examples/v2/groups/for-each
+    //recycling in groups: https://phaser.io/examples/v2/groups/recycling
+    //random int: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+    //move to another group: https://phaser.io/examples/v2/groups/move-to-another-group
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
-
+    this.john = null;
+    this.facing = 'idle';
+    this.privacy = 100.0;
+    //this.spawntimer = 0;
     this.bg = null;
     this.score = 0;
     // Add some text using a CSS style.
     // Center it in X, and position its top 15 pixels from the top of the world.
-    var style = { font: "25px Ethnocentric", fill: "#ffffff", align: "center" };
+    var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
-    this.difficulty = 5;
-    this.holdinglaundry = false;
-    this.gameOver = false;
-    
-    var map;
-    var layer;
-    
-    var marker;
-    var currentTile;
-    var cursors;
 };
 
 BasicGame.Game.prototype = {
     
     create: function () {
-        this.load.tilemap('play_grid', 'assets/grid.json', null, Phaser.Tilemap.TILED_JSON);
+        /*
+        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        
+        // Create a sprite at the center of the screen using the 'logo' image.
+        this.ghost = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
+        // Anchor the sprite at its center, as opposed to its top-left corner.
+        // so it will be truly centered.
+        this.ghost.anchor.setTo( 0.5, 0.5 );
+        
+        // Turn on the arcade physics engine for this sprite.
+        this.game.physics.enable( this.ghost, Phaser.Physics.ARCADE );
+        
+        
+        
+        
+        // When you click on the sprite, you go back to the MainMenu.
+        this.ghost.inputEnabled = true;
+        this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
+        */
+        
+        
+        //load background image
+        this.bg = this.game.add.sprite(0, 0, 'bg');
+        
+        //make a group to hold minoes in grid
+        var gridgroup = game.add.group();
+        
+        //create sprites
+        gridgroup.createMultiple(230, 'minoes', [0], true);
+        
+        //align sprites into rows of 10
+        gridgroup.align(10, -1, 40, 40);
+        gridgroup.x = 600;
+        gridgroup.y = -70;
+        gridgroup.filled = false;
+        
+        //this.music = this.add.audio('ghostBusters');
+        //this.sfx = this.add.audio('fart');
+        //this.music.play();
+        //this.music.loop = true;
+        //this.text = this.game.add.text( 100, 15, "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
+        
+        //10x23 empty grid for minoes. 
+       /* playgrid =     [[0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0], //spawning row
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0],
+                        [0,0,0,0,0,0,0,0,0,0]];
+                        */
+        //var gridlocation = [600, -70]
+        //starting square for minoes to spawn
+        var startsquare = [4,2];
+        //representing up to 5 active minoes
+        var activegroup = this.add.group();
+        
+        
+        //a lot of sprites
+        var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
+        
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        map = this.add.tilemap('play_grid');
-
-        map.addTilesetImage('Grid', 'minoes');
-
-        currentTile = map.getTile(2, 3);
-
-        layer = map.createLayer('Ground');
-
-        layer.resizeWorld();
-
-        marker = this.add.graphics();
-        marker.lineStyle(2, 0x000000, 1);
-        marker.drawRect(0, 0, 32, 32);
-
-        cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+        this.actButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
 
     update: function () {
-
-        marker.x = layer.getTileX(this.input.activePointer.worldX) * 32;
-        marker.y = layer.getTileY(this.input.activePointer.worldY) * 32;
-
-        if (this.input.mousePointer.isDown)
-        {
-            if (this.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
-            {
-                currentTile = map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y));
-            }
-            else
-            {
-                if (map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y)).index != currentTile.index)
-                {
-                    map.putTile(currentTile, layer.getTileX(marker.x), layer.getTileY(marker.y));
-                }
-            }
-        }
-
-        if (cursors.left.isDown)
-        {
-            this.camera.x -= 4;
-        }
-        else if (cursors.right.isDown)
-        {
-            this.camera.x += 4;
-        }
-
-        if (cursors.up.isDown)
-        {
-            this.camera.y -= 4;
-        }
-        else if (cursors.down.isDown)
-        {
-            this.camera.y += 4;
-        }
-
-
-
-        
-        
+        spawnMino();
         
     },
 
@@ -133,8 +158,53 @@ BasicGame.Game.prototype = {
         var boundsB = spriteB.getBounds();
         
         return Phaser.Rectangle.intersects(boundsA, boundsB);
+        
+    },
+    
+    stopMino: function(){
+        gridgroup.forEach(function(space){ //for each space on the grid
+            activegroup.forEach(function(mino){
+                if (mino.x == space.x & mino.y = space.y){ //if mino is overlapping space
+                    //fill in space
+                    space.frame = mino.frame;
+                    //remove active mino
+                    mino.kill();
+                }
+            });
+        });
+        this.spawnMino();
+    },
+    
+    
+    spawnMino: function (){
+        
+        //spawns a mino
+        //var minosize = Math.floor(Math.random() * (max - min + 1)) + min;
+        activegroup.kill();
+        var mino = activegroup.getFirstExists(false);
 
-}
+        if (mino){
+            mino.revive();
+        }
+        
+    },
+    
+    fall: function(){
+        var cleartofall = true;
+        gridgroup.forEach(function(space){
+            if (space.frame > 3){ //if space is not empty
+                activegroup.forEach(function(mino){
+                    if (space.top == mino.bottom){  //if filled space is below active mino
+                        cleartofall = false;
+                    }
+                });
+            }
+        });
+        if (!cleartofall){
+            this.stopMino();
+        }
+        
+    }
     
     
 
