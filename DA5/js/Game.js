@@ -201,6 +201,7 @@ BasicGame.Game.prototype = {
             mino.revive();
             mino.x = 760;
             mino.y = 10;
+            mino.visible = true;
         }
         
     },
