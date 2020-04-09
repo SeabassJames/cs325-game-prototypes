@@ -1,7 +1,7 @@
 "use strict";
 
 BasicGame.Game = function (game) {
-
+    
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
     /*
     this.game;      //  a reference to the currently running game (Phaser.Game)
@@ -51,22 +51,23 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
     
     create: function () {
+        this.load.tilemap('play_grid', 'assets/grid.json', null, Phaser.Tilemap.TILED_JSON);
 
-    map = this.add.tilemap('grid');
+        map = this.add.tilemap('play_grid');
 
-    map.addTilesetImage('grid', 'minoes');
+        map.addTilesetImage('Grid', 'minoes');
 
-    currentTile = map.getTile(2, 3);
+        currentTile = map.getTile(2, 3);
 
-    layer = map.createLayer('Ground');
+        layer = map.createLayer('Ground');
 
-    layer.resizeWorld();
+        layer.resizeWorld();
 
-    marker = this.add.graphics();
-    marker.lineStyle(2, 0x000000, 1);
-    marker.drawRect(0, 0, 32, 32);
+        marker = this.add.graphics();
+        marker.lineStyle(2, 0x000000, 1);
+        marker.drawRect(0, 0, 32, 32);
 
-    cursors = this.input.keyboard.createCursorKeys();
+        cursors = this.input.keyboard.createCursorKeys();
     },
 
     update: function () {
