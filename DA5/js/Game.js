@@ -244,16 +244,18 @@ BasicGame.Game.prototype = {
         
         if (cleartofall){
             //check if filled space is below 
-            var bottom1;
-            var left1;
+            var bottoms = [];
+            var lefts = [];
             this.activegroup.forEach(function(mino){
-                bottom1 = mino.bottom;
-                left1 = mino.left;
+                bottoms.append(mino.bottom);
+                lefts.append(mino.left);
             });
-            this.gridgroup.forEach(function(space){
+            this.gridgroup.forEach(function(space){ //checks every space on grid
                 if (space.frame > 3){ //if space is not empty
-                    if (bottom1 == space.top && left1 == space.left){
-                        cleartofall = false;
+                    for (var i = 0; i<bottoms.length; i++){//checks every active mino
+                        if (bottoms[i] == space.top && lefts[i] == space.left){
+                            cleartofall = false;
+                        }
                     }
                 }
             });
