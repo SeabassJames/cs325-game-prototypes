@@ -208,7 +208,7 @@ BasicGame.Game.prototype = {
         this.activegroup.forEach(function(mino){
                 if (mino.exists){
                     exists = true;
-                    break;
+                    //break;
                 }
         });
         if (!exists){
