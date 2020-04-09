@@ -47,6 +47,8 @@ BasicGame.Game = function (game) {
     // Center it in X, and position its top 15 pixels from the top of the world.
     var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
+    var falltimer = 100;
+    var gameOver = false;
 };
 
 BasicGame.Game.prototype = {
@@ -86,7 +88,7 @@ BasicGame.Game.prototype = {
         gridgroup.align(10, -1, 40, 40);
         gridgroup.x = 600;
         gridgroup.y = -70;
-        gridgroup.filled = false;
+        //gridgroup.filled = false;
         
         //this.music = this.add.audio('ghostBusters');
         //this.sfx = this.add.audio('fart');
@@ -124,10 +126,12 @@ BasicGame.Game.prototype = {
         var startsquare = [4,2];
         //representing up to 5 active minoes
         var activegroup = this.add.group();
-        
+        // allocate active minoes
+        //create sprites
+        activegroup.createMultiple(230, 'minoes', [0], false);
         
         //a lot of sprites
-        var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
+        //var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -136,7 +140,13 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-        spawnMino();
+        if (!gameOver){
+            falltimer -= 1;
+            if (falltimer <=0){
+                this.fall();
+                falltimer = 100;
+            }
+        }
         
     },
 
@@ -172,6 +182,7 @@ BasicGame.Game.prototype = {
                 }
             });
         });
+        
         this.spawnMino();
     },
     
@@ -183,8 +194,10 @@ BasicGame.Game.prototype = {
         activegroup.kill();
         var mino = activegroup.getFirstExists(false);
 
-        if (mino){
+        if (mino){  //spawn mino at starting point
             mino.revive();
+            mino.x = 760;
+            mino.y = 10;
         }
         
     },
@@ -202,6 +215,10 @@ BasicGame.Game.prototype = {
         });
         if (!cleartofall){
             this.stopMino();
+        }else{
+            activegroup.forEach(function(mino){
+                mino.y -= 40; //fall by 1 space
+            });
         }
         
     }
