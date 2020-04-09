@@ -204,6 +204,16 @@ BasicGame.Game.prototype = {
     
     fall: function(){
         var cleartofall = true;
+        var exists = false;
+        this.activegroup.forEach(function(mino){
+                if (mino.exists){
+                    exists = true;
+                    break;
+                }
+        });
+        if (!exists){
+            this.spawnMino();
+        }
         this.gridgroup.forEach(function(space){
             if (space.frame > 3){ //if space is not empty
                 this.activegroup.forEach(function(mino){
