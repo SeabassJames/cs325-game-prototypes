@@ -255,7 +255,7 @@ BasicGame.Game.prototype = {
             var bottoms = [];
             var lefts = [];
             this.activegroup.forEach(function(mino){
-                bottoms.pus(mino.bottom);
+                bottoms.push(mino.bottom);
                 lefts.push(mino.left);
             });
             this.gridgroup.forEach(function(space){ //checks every space on grid
