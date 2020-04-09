@@ -129,6 +129,9 @@ BasicGame.Game.prototype = {
         // allocate active minoes
         //create sprites
         this.activegroup.createMultiple(230, 'minoes', [5], false);
+        this.activegroup.align(4, -1, 40, 40);
+        this.activegroup.x = 760;
+        this.activegroup.y = 10;
         
         //a lot of sprites
         //var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
@@ -144,7 +147,7 @@ BasicGame.Game.prototype = {
             this.falltimer -= 1;
             if (this.falltimer <=0){
                 this.fall();
-                this.falltimer = 50;
+                this.falltimer = 20;
             }
         }
         
