@@ -32,7 +32,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image( 'bg', 'assets/bg.jpg' );
 		this.load.spritesheet('minoes', 'assets/minoes.png', 40, 40);
 		
-		this.load.tilemap('grid', 'assets/grid.json', null, Phaser.Tilemap.TILED_JSON);
+		//this.load.tilemap('grid', 'assets/grid.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('minoes', 'assets/minoes.png');
 	},
 
