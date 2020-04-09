@@ -193,7 +193,7 @@ BasicGame.Game.prototype = {
         });
         this.gridgroup.forEach(function(space){ //for each space on the grid
             for (var i = 0; i<xs.length; i++){  //for each active mino
-                if (xs[i] == space.x & ys[i] == space.y){ //if mino is overlapping space
+                if (xs[i] == space.x && ys[i] == space.y){ //if mino is overlapping space
                     //fill in space
                     space.frame = color;
                     //remove active mino
