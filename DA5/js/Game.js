@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         this.bg = this.game.add.sprite(0, 0, 'bg');
         
         //make a group to hold minoes in grid
-        var gridgroup = game.add.group();
+        var gridgroup = this.add.group();
         
         //create sprites
         gridgroup.createMultiple(230, 'minoes', [0], true);
