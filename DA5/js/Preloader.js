@@ -29,17 +29,8 @@ BasicGame.Preloader.prototype = {
 		this.load.image('instructions', 'assets/Instructions.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
-		this.load.audio('ghostBusters', ['assets/ghostbusters.mp3']);
-		//this.load.audio('ghostNappa', ['assets/Ghost_Nappa.mp3']);
-		this.load.audio('fart', ['assets/Bronx Cheer.wav']);
-		this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image( 'bg', 'assets/bg.jpg' );
-		//this.load.image('bean10', 'assets/10beans.png');
-		this.load.spritesheet('washer', 'assets/WashingMachine.png', 180, 300);
-		this.load.spritesheet('dryer', 'assets/Dryer.png', 180, 300);
-		this.load.spritesheet('curtains', 'assets/Curtains.png', 150, 600);
-		//this.load.spritesheet('ghost', 'assets/ghost_sprites.png', 300, 300);
-		this.load.spritesheet('john', 'assets/John.png', 400, 650);
+		this.load.spritesheet('minoes', 'assets/minoes.png', 40, 40);
 	},
 
 	create: function () {
