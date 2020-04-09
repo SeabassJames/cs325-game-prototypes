@@ -233,21 +233,6 @@ BasicGame.Game.prototype = {
         if (!exists){
             this.spawnMino();
         }
-        /*
-        this.activegroup.forEach(function(mino){
-            if (mino.bottom >= 850){
-                cleartofall = false;
-            }else{
-                this.gridgroup.forEach(function(space){
-                    if (space.frame > 3){ //if space is not empty
-                        if (space.top == mino.bottom){  //if filled space is below active mino
-                            cleartofall = false;
-                        }
-                    }
-                });
-            }
-        });
-        */
         this.gridgroup.forEach(function(space){
             if (space.frame > 3){ //if space is not empty
                 this.activegroup.forEach(function(mino){
@@ -261,6 +246,21 @@ BasicGame.Game.prototype = {
             }
         });
         
+        if (cleartofall){
+            this.activegroup.forEach(function(mino){
+                if (mino.bottom >= 850){
+                    cleartofall = false;
+                }else{
+                    this.gridgroup.forEach(function(space){
+                        if (space.frame > 3){ //if space is not empty
+                            if (space.top == mino.bottom){  //if filled space is below active mino
+                                cleartofall = false;
+                            }
+                        }
+                    });
+                }
+            });
+        }
         if (!cleartofall){
             this.stopMino();
         }else{
