@@ -131,7 +131,7 @@ BasicGame.Game.prototype = {
         this.activegroup = this.add.group();
         // allocate active minoes
         //create sprites
-        this.activegroup.createMultiple(1, 'minoes', [5], false);
+        this.activegroup.createMultiple(1, 'minoes', [5], true);
         this.activegroup.align(5, -1, 40, 40);
         this.activegroup.x = 760;
         this.activegroup.y = 10;
@@ -142,7 +142,7 @@ BasicGame.Game.prototype = {
 
         //  And play them
         //this.gridgroup.callAll('animations.play', 'animations', 'clear');
-        this.activegroup.callAll('animations.play', 'animations', 'clear');
+        //this.activegroup.callAll('animations.play', 'animations', 'clear');
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
