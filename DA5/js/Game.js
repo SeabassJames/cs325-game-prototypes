@@ -32,24 +32,17 @@ BasicGame.Game = function (game) {
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
-    this.john = null;
-    this.facing = 'idle';
-    this.privacy = 100.0;
-    //this.spawntimer = 0;
+    this.map = null;
+    
     this.bg = null;
     this.score = 0;
     // Add some text using a CSS style.
     // Center it in X, and position its top 15 pixels from the top of the world.
-    var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+    var style = { font: "25px Ethnocentric", fill: "#ffffff", align: "center" };
     this.text = null;
-    this.washerState = "paused";
-    this.dryerState = "open";
-    this.curtainState = "off";
-    this.washerTime = 30.00;
-    this.dryerTime = 60.00;
     this.difficulty = 5;
     this.holdinglaundry = false;
-    this.gameWin = false;
+    this.gameOver = false;
 };
 
 BasicGame.Game.prototype = {
@@ -80,58 +73,52 @@ BasicGame.Game.prototype = {
         //this.sfx = this.add.audio('fart');
         //this.music.play();
         //this.music.loop = true;
-        this.text = this.game.add.text( 100, 15, "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
+        //this.text = this.game.add.text( 100, 15, "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
         
         
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-        //this.game.stage.backgroundColor = '#0173bd';
-
-        this.washer = this.game.add.sprite(315, 55, 'washer');
-        this.dryer = this.game.add.sprite(495, 55, 'dryer');
-        this.curtains = this.game.add.sprite(0, 0, 'curtains');
-        this.john = this.game.add.sprite(300, 300, 'john');
+        
+        this.map = 
+        //this.washer = this.game.add.sprite(315, 55, 'washer');
+        //this.dryer = this.game.add.sprite(495, 55, 'dryer');
+        //this.curtains = this.game.add.sprite(0, 0, 'curtains');
+        //this.john = this.game.add.sprite(300, 300, 'john');
 
         //  Enable Arcade Physics for the sprite
-        this.game.physics.enable(this.john, Phaser.Physics.ARCADE);
+        //this.game.physics.enable(this.john, Phaser.Physics.ARCADE);
 
         //  Tell it we don't want physics to manage the rotation
-        this.john.body.allowRotation = false;
+        //this.john.body.allowRotation = false;
         
         // Make sprite smaller
-        this.john.scale.setTo(0.3, 0.3);
+        //this.john.scale.setTo(0.3, 0.3);
         
         //animations
-        this.john.animations.add('left', [0, 1, 2, 3], 20, true);
-        this.john.animations.add('turn', [4], 20, true);
-        this.john.animations.add('right', [5,6, 7, 8], 20, true);
-        this.john.animations.add('laundry', [9], 20, true);
+        //this.john.animations.add('left', [0, 1, 2, 3], 20, true);
+        //this.john.animations.add('turn', [4], 20, true);
+        //this.john.animations.add('right', [5,6, 7, 8], 20, true);
+        //this.john.animations.add('laundry', [9], 20, true);
         
-        this.washer.animations.add('running', [0,1], 20, true);
-        this.washer.animations.add('paused', [2], 20, true);
-        this.washer.animations.add('off', [3], 20, true);
-        this.washer.animations.add('open', [4], 20, true);
-        
-        this.dryer.animations.add('running', [0,1], 20, true);
-        this.dryer.animations.add('paused', [2], 20, true);
-        this.dryer.animations.add('off', [3], 20, true);
-        this.dryer.animations.add('open', [4], 20, true);
-        
-        this.curtains.animations.add('closed', [0], 20, true);
-        this.curtains.animations.add('open', [1], 20, true);
+        //this.washer.animations.add('running', [0,1], 20, true);
+        //this.washer.animations.add('paused', [2], 20, true);
+        //this.washer.animations.add('off', [3], 20, true);
+        //this.washer.animations.add('open', [4], 20, true);
         
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.actButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
 
     update: function () {
-        
+        /*
         this.john.body.velocity.x = 0;
         this.john.body.velocity.y = 0;
+        */
+        /*
         if (this.privacy > 0){
             
             //washer
+            
             if (this.washerTime <= 0 & this.washerState != "open"){
                 this.washerTime = 0;
                 this.washerState = "stopped";
@@ -193,33 +180,9 @@ BasicGame.Game.prototype = {
                 }
             }
             
-            //curtains
-            if (this.gameWin == false & this.game.rnd.integerInRange(0, 1000) < this.difficulty){
-                this.curtainState = "open";
-                this.curtains.animations.play('open');
-            }
-            if (this.john.body.left <= 90 & this.actButton.isDown){
-                this.curtainState = "closed";
-                this.curtains.animations.play('closed');
-            }
-            if (this.curtainState == "open"){
-                this.privacy -= 0.2;
-                if (this.privacy < 0){
-                    this.privacy = 0;
-                }
-            }else{
-                this.privacy += 0.1;
-                if (this.privacy >= 100){
-                    this.privacy = 100;
-                }
-            }
-            
-            //comics
-            if (this.john.body.right >= 700 & this.actButton.isDown){
-                this.score += 1;
-            }
             
             //horizontal movement
+            /*
             if (this.cursors.left.isDown & this.john.body.left > 50)
             {
                 this.john.body.velocity.x = -400;
@@ -251,7 +214,9 @@ BasicGame.Game.prototype = {
             if (this.holdinglaundry == true){
                 this.john.animations.play('laundry');
             }
+            */
             //vertical movement
+            /*
             if (this.cursors.down.isDown & this.john.body.bottom < 600)
             {
                 this.john.body.velocity.y = 350;
@@ -262,6 +227,7 @@ BasicGame.Game.prototype = {
                 this.john.body.velocity.y = -350;
 
             }
+            */
             /*
             if (this.score == 9001){
                 this.game.stage.backgroundColor = '#fafa00';
@@ -271,11 +237,15 @@ BasicGame.Game.prototype = {
                 this.music.loop = true;
             }
             */
-            this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\nDryer time: " + parseInt(this.dryerTime) + ":" + parseInt((this.dryerTime - parseInt(this.dryerTime)) * 60);
+            
+            //this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60) + "\nDryer time: " + parseInt(this.dryerTime) + ":" + parseInt((this.dryerTime - parseInt(this.dryerTime)) * 60);
+            /*
             if (this.dryerTime <= 0){
                 this.gameWin = true;
                 this.text.text = "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nYour laundry is all done!";
             }
+            */
+            /*
         }else{
         
             //out of privacy
@@ -285,6 +255,7 @@ BasicGame.Game.prototype = {
             //this.music.loop = false;
             
         }
+        */
     },
 
 
