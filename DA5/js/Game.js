@@ -71,43 +71,43 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-            marker.x = layer.getTileX(this.input.activePointer.worldX) * 32;
-            marker.y = layer.getTileY(this.input.activePointer.worldY) * 32;
+        marker.x = layer.getTileX(this.input.activePointer.worldX) * 32;
+        marker.y = layer.getTileY(this.input.activePointer.worldY) * 32;
 
-            if (this.input.mousePointer.isDown)
+        if (this.input.mousePointer.isDown)
+        {
+            if (this.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
             {
-                if (this.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
+                currentTile = map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y));
+            }
+            else
+            {
+                if (map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y)).index != currentTile.index)
                 {
-                    currentTile = map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y));
-                }
-                else
-                {
-                    if (map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y)).index != currentTile.index)
-                    {
-                        map.putTile(currentTile, layer.getTileX(marker.x), layer.getTileY(marker.y));
-                    }
+                    map.putTile(currentTile, layer.getTileX(marker.x), layer.getTileY(marker.y));
                 }
             }
-
-            if (cursors.left.isDown)
-            {
-                this.camera.x -= 4;
-            }
-            else if (cursors.right.isDown)
-            {
-                this.camera.x += 4;
-            }
-
-            if (cursors.up.isDown)
-            {
-                this.camera.y -= 4;
-            }
-            else if (cursors.down.isDown)
-            {
-                this.camera.y += 4;
-            }
-
         }
+
+        if (cursors.left.isDown)
+        {
+            this.camera.x -= 4;
+        }
+        else if (cursors.right.isDown)
+        {
+            this.camera.x += 4;
+        }
+
+        if (cursors.up.isDown)
+        {
+            this.camera.y -= 4;
+        }
+        else if (cursors.down.isDown)
+        {
+            this.camera.y += 4;
+        }
+
+
 
         
         
