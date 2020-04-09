@@ -34,6 +34,7 @@ BasicGame.Game = function (game) {
     //recycling in groups: https://phaser.io/examples/v2/groups/recycling
     //random int: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
     //move to another group: https://phaser.io/examples/v2/groups/move-to-another-group
+    //debugging: https://phaser.io/examples/v2/debug/debug-display
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
@@ -74,7 +75,7 @@ BasicGame.Game.prototype = {
         this.ghost.inputEnabled = true;
         this.ghost.events.onInputDown.add( function() { this.quitGame(); }, this );
         */
-        this.physics.startSystem(Phaser.Physics.ARCADE);
+        //this.physics.startSystem(Phaser.Physics.ARCADE);
         
         //load background image
         this.bg = this.game.add.sprite(0, 0, 'bg');
@@ -246,7 +247,8 @@ BasicGame.Game.prototype = {
     
     render: function(){
         this.activegroup.forEach(function(mino){
-            this.debug.body(mino);
+            this.debug.spriteBounds(sprite);
+            this.debug.spriteCorners(sprite, true, true);
         });
     }
     
