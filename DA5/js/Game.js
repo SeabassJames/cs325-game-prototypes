@@ -196,7 +196,7 @@ BasicGame.Game.prototype = {
         
         this.spawnMino();
         
-        this.activegroup.callAll('animations.play', 'animations', 'clear');
+        //this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     
@@ -218,7 +218,7 @@ BasicGame.Game.prototype = {
         });
         this.activegroup.visible = true;
         
-        this.activegroup.callAll('animations.play', 'animations', 'clear');
+        //this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     fall: function(){
@@ -253,7 +253,7 @@ BasicGame.Game.prototype = {
             });
         }
         
-        this.activegroup.callAll('animations.play', 'animations', 'clear');
+        //this.activegroup.callAll('animations.play', 'animations', 'clear');
     },
     
     render: function(){
