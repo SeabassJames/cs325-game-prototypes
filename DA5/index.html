@@ -41,16 +41,18 @@ TBA
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
-What did you learn from this prototype?
-TBA
-What was the easiest or hardest part of making it?
-TBA
+What did you learn from this prototype?<br>
+I learned how to use groups in phaser. <br>
+What was the easiest or hardest part of making it?<br>
+The easiest part was making the sprites.<br>
+One of the hardest part was deciding how I wanted to make the game. At first, I wanted to use a 2D array of sprites, but I couldn't figure out how to do that. Then I looked at tilemaps, and as I was starting to figure those out, I found groups, which I felt was the best way to do it.<br>
+Another hard part was figuring out how to make the activegroup, the group used for the actively falling minoes, work properly. While debugging, I can see that they are "visible," and at coordinates where they should be, and are the correct sprite, but they didn't appear on screen for some reason.<br>
 </li>
 
 <li><strong>Prototype Assets:</strong>
 Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
 <ul>
-<li>TBATBATBATBA</li>
+<!-- <li>TBATBATBATBA</li>-->
 <li>Loading screen: self-made</li>
 <li>All sprites: self-made</li>
 <li>Button: Phaser example <a href="https://phaser.io/examples/v2/buttons/action-on-click">Action On Click</a></li>
@@ -62,8 +64,14 @@ Did you make your prototype assets from scratch? Did you borrow them? Cite your 
 <li><strong>Prototype Closest Other Game:</strong>
 Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
 <ul>
-<li>TBA</li>
 <li>This game is most similar to Tetris</li>
+<li>I borrowed code from the following examples:<li>
+	<ul>
+	<li>groups: https://phaser.io/examples/v2/groups/align-sprites-to-grid </li>
+	<li>for each in groups: https://phaser.io/examples/v2/groups/for-each </li>
+	<li>recycling in groups: https://phaser.io/examples/v2/groups/recycling</li>
+    	<li>random int: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range</li>
+	</ul>
 </ul>
 </li>
 	
@@ -72,16 +80,13 @@ A one-sentence summary of your game.<br>
 Choose a range of sizes of polyominoes to play with, then fill entire rows to clear them as the polyominoes fall to avoid them stacking up to the top!
 </li>
 
-<li><strong>Theme:</strong>
-State which of the Storymatic themes you used.<br>
-TBA?
-</li>
 
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?<br>
-TBA
+Note: not all mechanics are in this prototype<br>
+	
 Spawning, controlling, and stacking multiple minoes (square objects) and detecting when they are too high<br>
-Having multiple objects controlled simultaneously yet differently (multiple squares in one polyomno)
+Having multiple objects controlled simultaneously yet differently (multiple squares in one polyomno) <br>
 Switching player control from one object to another<br>
 </li>
 
