@@ -202,6 +202,7 @@ BasicGame.Game.prototype = {
                 mino.x = 760;
                 mino.y = 10;
                 mino.visible = true;
+                mino.frame = 5;
             //}
         });
         this.activegroup.visible = true;
@@ -240,6 +241,12 @@ BasicGame.Game.prototype = {
             });
         }
         
+    },
+    
+    render: function(){
+        this.activegroup.forEach(function(mino){
+            this.debug.body(mino);
+        });
     }
     
     
