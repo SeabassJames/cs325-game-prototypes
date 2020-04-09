@@ -10,7 +10,7 @@
 },
 {
 	"filename": "out",
-	"frame": {"x":0,"y":100,"w":545,"h":71},
+	"frame": {"x":0,"y":100,"w":545,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":545,"h":100},
