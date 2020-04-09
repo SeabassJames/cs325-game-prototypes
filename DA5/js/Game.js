@@ -128,7 +128,7 @@ BasicGame.Game.prototype = {
         this.activegroup = this.add.group();
         // allocate active minoes
         //create sprites
-        this.activegroup.createMultiple(230, 'minoes', [0], false);
+        this.activegroup.createMultiple(230, 'minoes', [5], false);
         
         //a lot of sprites
         //var grid00 = this.game.add.sprite(gridlocation[0], gridlocation[1], 'minoes');
