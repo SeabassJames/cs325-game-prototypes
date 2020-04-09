@@ -20,7 +20,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.add.sprite(0, 0, 'titlePage');
 
-		this.playButton = this.add.button( 303, 400, 'playButton', this.startGame, this, 'over', 'out', 'down');
+		this.playButton = this.add.button( 527, 410, 'playButton', this.startGame, this, 'over', 'out', 'down');
 		this.clickcount = 0;
 	},
 
@@ -33,16 +33,17 @@ BasicGame.MainMenu.prototype = {
 	startGame: function (pointer) {
 
 		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
+		/*
 		this.music.stop();
 		if (this.clickcount <= 0){
 			this.add.sprite(0, 0, 'instructions');
 			this.clickcount ++;
 			this.playButton = null;
 			this.playButton = this.add.button( 303, 500, 'playButton', this.startGame, this, 'over', 'out', 'down');
-		}else{
+		}else{*/
 			//	And start the game
 			this.state.start('Game');
-		}
+		//}
 
 	}
 
