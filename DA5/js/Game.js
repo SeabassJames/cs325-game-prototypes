@@ -183,15 +183,23 @@ BasicGame.Game.prototype = {
     },
     
     stopMino: function(){
+        var xs = [];
+        var ys = [];
+        var color;
+        this.activegroup.forEach(function(mino){
+            xs.append(mino.x);
+            ys.append(mino.y);
+            color = mino.frame;
+        });
         this.gridgroup.forEach(function(space){ //for each space on the grid
-            this.activegroup.forEach(function(mino){
-                if (mino.x == space.x & mino.y == space.y){ //if mino is overlapping space
+            for (var i = 0; i<xs.length; i++){  //for each active mino
+                if (xs[i] == space.x & ys[i] == space.y){ //if mino is overlapping space
                     //fill in space
-                    space.frame = mino.frame;
+                    space.frame = color;
                     //remove active mino
                     //mino.kill();
                 }
-            });
+            }
         });
         
         this.spawnMino();
