@@ -82,7 +82,7 @@ BasicGame.Game.prototype = {
         this.gridgroup = this.add.group();
         
         //create sprites
-        this.gridgroup.createMultiple(230, 'minoes', [2], true);
+        this.gridgroup.createMultiple(230, 'minoes', [0], true);
         
         //align sprites into rows of 10
         this.gridgroup.align(10, -1, 40, 40);
