@@ -247,8 +247,8 @@ BasicGame.Game.prototype = {
     
     render: function(){
         this.activegroup.forEach(function(mino){
-            this.debug.spriteBounds(mino);
-            this.debug.spriteCorners(mino, true, true);
+            this.game.debug.spriteBounds(mino);
+            this.game.debug.spriteCorners(mino, true, true);
         });
     }
     
