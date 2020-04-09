@@ -223,6 +223,9 @@ BasicGame.Game.prototype = {
                     if (space.top == mino.bottom){  //if filled space is below active mino
                         cleartofall = false;
                     }
+                    if (mino.bottom <= 850){
+                        cleartofall = false;
+                    }
                 });
             }
         });
