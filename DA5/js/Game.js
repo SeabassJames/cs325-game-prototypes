@@ -227,7 +227,7 @@ BasicGame.Game.prototype = {
             this.stopMino();
         }else{
             this.activegroup.forEach(function(mino){
-                mino.y -= 40; //fall by 1 space
+                mino.y += 40; //fall by 1 space
             });
         }
         
