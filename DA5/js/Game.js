@@ -260,7 +260,7 @@ BasicGame.Game.prototype = {
             });
             this.gridgroup.forEach(function(space){
                 if (space.frame > 3){ //if space is not empty
-                    if (bottom1 == space.top && left1 = space.left){
+                    if (bottom1 == space.top && left1 == space.left){
                         cleartofall = false;
                     }
                 }
