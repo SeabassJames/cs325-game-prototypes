@@ -128,8 +128,8 @@ BasicGame.Game.prototype = {
         this.activegroup = this.add.group();
         // allocate active minoes
         //create sprites
-        this.activegroup.createMultiple(5, 'minoes', [5], false);
-        this.activegroup.align(4, -1, 40, 40);
+        this.activegroup.createMultiple(1, 'minoes', [5], false);
+        this.activegroup.align(5, -1, 40, 40);
         this.activegroup.x = 760;
         this.activegroup.y = 10;
         
