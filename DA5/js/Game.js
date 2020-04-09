@@ -137,8 +137,8 @@ BasicGame.Game.prototype = {
         this.activegroup.y = 10;
         
         //  Now using the power of callAll we can add the same animation to all coins in the group:
-        this.gridgroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4, 5], 10, true);
-        this.activegroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4, 5], 10, true);
+        this.gridgroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4], 10, true);
+        this.activegroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4], 10, true);
 
         //  And play them
         //this.gridgroup.callAll('animations.play', 'animations', 'clear');
