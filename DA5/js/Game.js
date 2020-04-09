@@ -141,6 +141,7 @@ BasicGame.Game.prototype = {
         this.activegroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4, 5], 10, true);
 
         //  And play them
+        //this.gridgroup.callAll('animations.play', 'animations', 'clear');
         this.activegroup.callAll('animations.play', 'animations', 'clear');
         
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
