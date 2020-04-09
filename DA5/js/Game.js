@@ -45,10 +45,10 @@ BasicGame.Game = function (game) {
     this.score = 0;
     // Add some text using a CSS style.
     // Center it in X, and position its top 15 pixels from the top of the world.
-    var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+    this.style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     this.text = null;
-    var falltimer = 100;
-    var gameOver = false;
+    this.falltimer = 100;
+    this.gameOver = false;
 };
 
 BasicGame.Game.prototype = {
@@ -140,11 +140,11 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-        if (!gameOver){
-            falltimer -= 1;
-            if (falltimer <=0){
+        if (!this.gameOver){
+            this.falltimer -= 1;
+            if (this.falltimer <=0){
                 this.fall();
-                falltimer = 100;
+                this.falltimer = 100;
             }
         }
         
