@@ -233,31 +233,36 @@ BasicGame.Game.prototype = {
         if (!exists){
             this.spawnMino();
         }
-        this.gridgroup.forEach(function(space){
-            if (space.frame > 3){ //if space is not empty
-                this.activegroup.forEach(function(mino){
-                    if (space.top == mino.bottom){  //if filled space is below active mino
-                        cleartofall = false;
-                    }
-                    if (mino.bottom <= 850){
-                        cleartofall = false;
+        
+        
+        this.activegroup.forEach(function(mino){
+            //check if mino is at bottom of grid
+            if (mino.bottom >= 850){
+                cleartofall = false;
+            }else{
+                this.gridgroup.forEach(function(space){
+                    if (space.frame > 3){ //if space is not empty
+                        if (space.top == mino.bottom){  //if filled space is below active mino
+                            cleartofall = false;
+                        }
                     }
                 });
             }
         });
         
         if (cleartofall){
+            //check if filled space is below 
+            var bottom1;
+            var left1;
             this.activegroup.forEach(function(mino){
-                if (mino.bottom >= 850){
-                    cleartofall = false;
-                }else{
-                    this.gridgroup.forEach(function(space){
-                        if (space.frame > 3){ //if space is not empty
-                            if (space.top == mino.bottom){  //if filled space is below active mino
-                                cleartofall = false;
-                            }
-                        }
-                    });
+                bottom1 = mino.bottom;
+                left1 = mino.left;
+            });
+            this.gridgroup.forEach(function(space){
+                if (space.frame > 3){ //if space is not empty
+                    if (bottom1 == space.top && left1 = space.left){
+                        cleartofall = false;
+                    }
                 }
             });
         }
