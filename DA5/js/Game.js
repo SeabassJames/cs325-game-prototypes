@@ -174,7 +174,7 @@ BasicGame.Game.prototype = {
     stopMino: function(){
         gridgroup.forEach(function(space){ //for each space on the grid
             activegroup.forEach(function(mino){
-                if (mino.x == space.x & mino.y = space.y){ //if mino is overlapping space
+                if (mino.x == space.x & mino.y == space.y){ //if mino is overlapping space
                     //fill in space
                     space.frame = mino.frame;
                     //remove active mino
