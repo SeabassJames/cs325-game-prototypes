@@ -30,6 +30,7 @@ BasicGame.Preloader.prototype = {
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		this.load.image( 'bg', 'assets/bg.jpg' );
+		this.load.image( 'gameover', 'assets/GAMEOVER.png' );
 		this.load.spritesheet('minoes', 'assets/minoes.png', 40, 40);
 		
 		//this.load.tilemap('grid', 'assets/grid.json', null, Phaser.Tilemap.TILED_JSON);
