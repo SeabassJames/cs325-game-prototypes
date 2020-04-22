@@ -39,9 +39,6 @@ BasicGame.Game = function (game) {
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
-    this.john = null;
-    this.facing = 'idle';
-    this.privacy = 100.0;
     //this.spawntimer = 0;
     this.bg = null;
     this.score = 0;
@@ -97,7 +94,7 @@ BasicGame.Game.prototype = {
         //this.sfx = this.add.audio('fart');
         //this.music.play();
         //this.music.loop = true;
-        //this.text = this.game.add.text( 100, 15, "Privacy: " + parseInt(this.privacy) + "\nScore: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
+        //this.text = this.game.add.text( 100, 15, "Score: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
         
         //10x23 empty grid for minoes. 
        /* playgrid =     [[0,0,0,0,0,0,0,0,0,0],
@@ -216,7 +213,7 @@ BasicGame.Game.prototype = {
                     space.frame = color;
                     //remove active mino
                     //mino.kill();
-                    if (space.y <= 80){ //if stopped at top of screen
+                    if (space.y <= 40){ //if stopped at top of screen
                         gocheck = true;
                     }
                 }
@@ -239,7 +236,7 @@ BasicGame.Game.prototype = {
             //if (mino){  //spawn mino at starting point
                 mino.revive();
                 mino.x = 160;
-                mino.y = 80;
+                mino.y = 40;
                 mino.visible = true;
                 mino.frame = 5;
                 
