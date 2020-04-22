@@ -173,7 +173,7 @@ BasicGame.Game.prototype = {
                 this.falltimer = 10;
             }
         }else{
-            this.gameover = this.game.add.sprite(318, 350, 'gameover');
+            this.gameoversprite = this.game.add.sprite(318, 350, 'gameover');
         }
         this.world.bringToTop(this.activegroup);
     },
@@ -203,6 +203,7 @@ BasicGame.Game.prototype = {
         var xs = [];
         var ys = [];
         var color;
+        var gocheck = false;
         this.activegroup.forEach(function(mino){
             xs.push(mino.x);
             ys.push(mino.y);
@@ -216,12 +217,12 @@ BasicGame.Game.prototype = {
                     //remove active mino
                     //mino.kill();
                     if (space.y <= 80){ //if stopped at top of screen
-                        this.gameOver = true;
+                        gocheck = true;
                     }
                 }
             }
         });
-        
+        this.gameOver = gocheck;
         this.spawnMino();
         
         //this.activegroup.callAll('animations.play', 'animations', 'clear');
