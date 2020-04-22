@@ -248,7 +248,7 @@ BasicGame.Game.prototype = {
         
         this.activegroup.forEach(function(mino){
             //check if mino is at bottom of grid
-            if (mino.bottom >= 840){
+            if (mino.bottom >= 920){
                 cleartofall = false;
             }
         });
