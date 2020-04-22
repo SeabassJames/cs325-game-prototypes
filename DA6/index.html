@@ -33,7 +33,7 @@ body
 
 <ul>
 <li><strong>Originality:</strong>
-Having polyominoes of various sizes and allowing players to choose which polyominoes appear during play
+Having polyominoes of various sizes and allowing players to choose which polyominoes appear during play (not yet implemented)
 </li>
 
 <li><strong>Technical Merit:</strong>
@@ -42,12 +42,10 @@ TBA
 
 <li><strong>Prototype Postmortem:</strong>
 What did you learn from this prototype?<br>
-I learned how to use groups in phaser. <br>
+I learned how to better use groups in phaser. <br>
 What was the easiest or hardest part of making it?<br>
 The easiest part was making the sprites.<br>
-One of the hardest part was deciding how I wanted to make the game. At first, I wanted to use a 2D array of sprites, but I couldn't figure out how to do that. Then I looked at tilemaps, and as I was starting to figure those out, I found groups, which I felt was the best way to do it.<br>
-Another hard part was figuring out how to make the activegroup, the group used for the actively falling minoes, work properly. While debugging, I can see that they are "visible," and at coordinates where they should be, and are the correct sprite, but they didn't appear on screen for some reason.<br>
-	I eventually fixed it by changing one false to true when creating.
+One hard part was figuring out why the sprites were misaligned. I eventually realized that the location of a sprite that's in a group is relative to the group's location, so I had to align the activegroup with the gridgroup and adjust other locations accordingly.
 </li>
 
 <li><strong>Prototype Assets:</strong>
@@ -85,10 +83,13 @@ Choose a range of sizes of polyominoes to play with, then fill entire rows to cl
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?<br>
 Note: not all mechanics are in this prototype<br>
-	
+Implemented:<br>
 Spawning, controlling, and stacking multiple minoes (square objects) and detecting when they are too high<br>
+Switching player control from one object to another (done by changing non-controlled grid to match object previously controlled by the player, then resetting player-controlled object)<br>
+<br>
+Not yet implemented:<br>
 Having multiple objects controlled simultaneously yet differently (multiple squares in one polyomno) <br>
-Switching player control from one object to another<br>
+Clearing a filled row and dropping above pieces down<br>
 </li>
 
 <li><strong>Player Experience Goals:</strong>
@@ -110,6 +111,7 @@ What player strategies do you expect will be effective at playing this game?<br>
 <li>Stacking polyominoes on the left and right sides while leaving the middle open</li>
 <li>Keeping a line piece in storage until there is a narrow gap in which the line piece may clear a number of rows corresponding to the length of the line piece</li>  
 <li>Keeping a generally good polyomino which can fit in many different positions, such as a T-shaped tertromino, in storage until the player needs it, such as when they receive a polyomino which does not fit well into the current layout</li>
+<li>Moving a piece left/right to delay the falling to have more time to think</li>
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
