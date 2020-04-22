@@ -155,11 +155,17 @@ BasicGame.Game.prototype = {
 
     update: function () {
         if (!this.gameOver){
-            if (this.cursors.left.isDown){
+            if (this.cursors.left.isDown){ //move left
                 this.moveLeft();
             }
-            if (this.cursors.right.isDown){
+            if (this.cursors.right.isDown){ //move right
                 this.moveRight();
+            }
+            if (this.cursors.down.isDown){ //drop faster
+                this.falltimer -=2;
+            }
+            if (this.cursors.up.isDown){ //instant drop
+                this.falltimer = 0;
             }
             this.falltimer -= 1;
             if (this.falltimer <=0){
@@ -320,7 +326,7 @@ BasicGame.Game.prototype = {
         if (!cleartomove){
             //this.stopMino();
         }else{
-            this.falltimer += 1;
+            this.falltimer += 0.4;
             this.activegroup.forEach(function(mino){
                 mino.x -= 40; //move by 1 space
             });
@@ -361,7 +367,7 @@ BasicGame.Game.prototype = {
         if (!cleartomove){
             //this.stopMino();
         }else{
-            this.falltimer += 1;
+            this.falltimer += 0.4;
             this.activegroup.forEach(function(mino){
                 mino.x += 40; //move by 1 space
             });
