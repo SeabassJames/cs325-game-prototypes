@@ -220,8 +220,8 @@ BasicGame.Game.prototype = {
         this.activegroup.forEach(function(mino){
             //if (mino){  //spawn mino at starting point
                 mino.revive();
-                mino.x = 760;
-                mino.y = 10;
+                mino.x = 160;
+                mino.y = 80;
                 mino.visible = true;
                 mino.frame = 5;
                 
