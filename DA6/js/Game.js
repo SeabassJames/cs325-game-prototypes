@@ -158,6 +158,9 @@ BasicGame.Game.prototype = {
             if (this.cursors.left.isDown){
                 this.moveLeft();
             }
+            if (this.cursors.right.isDown){
+                this.moveRight();
+            }
             this.falltimer -= 1;
             if (this.falltimer <=0){
                 this.fall();
@@ -288,18 +291,6 @@ BasicGame.Game.prototype = {
     //moves active minoes left
     moveLeft: function(){
         var cleartomove = true;
-        /*
-        var exists = false;
-        this.activegroup.forEach(function(mino){
-                if (mino.exists){
-                    exists = true;
-                    //break;
-                }
-        });
-        if (!exists){
-            this.spawnMino();
-        }
-        */
         
         this.activegroup.forEach(function(mino){
             //check if mino is at left of grid
@@ -340,7 +331,41 @@ BasicGame.Game.prototype = {
     
     //moves active minoes right
     moveRight: function(){
+        var cleartomove = true;
         
+        this.activegroup.forEach(function(mino){
+            //check if mino is at left of grid
+            if (mino.right >= 400){
+                cleartomove = false;
+            }
+        });
+        
+        if (cleartomove){
+            //check if filled space is to the left 
+            var bottoms = [];
+            var rights = [];
+            this.activegroup.forEach(function(mino){
+                bottoms.push(mino.bottom);
+                rights.push(mino.right);
+            });
+            this.gridgroup.forEach(function(space){ //checks every space on grid
+                if (space.frame > 3){ //if space is not empty
+                    for (var i = 0; i<bottoms.length; i++){//checks every active mino
+                        if (bottoms[i] == space.bottom && rights[i] == space.left){
+                            cleartomove = false;
+                        }
+                    }
+                }
+            });
+        }
+        if (!cleartomove){
+            //this.stopMino();
+        }else{
+            this.falltimer += 1;
+            this.activegroup.forEach(function(mino){
+                mino.x += 40; //move by 1 space
+            });
+        }
     },
     
     render: function(){
