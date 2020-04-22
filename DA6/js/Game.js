@@ -133,8 +133,11 @@ BasicGame.Game.prototype = {
         //create sprites
         this.activegroup.createMultiple(1, 'minoes', [5], true);
         this.activegroup.align(5, -1, 40, 40);
-        this.activegroup.x = 760;
-        this.activegroup.y = 10;
+        //this.activegroup.x = 760;
+        //this.activegroup.y = 10;
+        this.activegroup.x = 600;
+        this.activegroup.y = -70;
+        this.spawnMino();
         
         //  Now using the power of callAll we can add the same animation to all coins in the group:
         this.gridgroup.callAll('animations.add', 'animations', 'clear', [1, 2, 3, 4], 10, true);
