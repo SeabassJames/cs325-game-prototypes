@@ -155,6 +155,9 @@ BasicGame.Game.prototype = {
 
     update: function () {
         if (!this.gameOver){
+            if (this.cursors.left.isDown){
+                this.moveLeft();
+            }
             this.falltimer -= 1;
             if (this.falltimer <=0){
                 this.fall();
@@ -280,6 +283,64 @@ BasicGame.Game.prototype = {
         }
         
         //this.activegroup.callAll('animations.play', 'animations', 'clear');
+    },
+    
+    //moves active minoes left
+    moveLeft: function(){
+        var cleartomove = true;
+        /*
+        var exists = false;
+        this.activegroup.forEach(function(mino){
+                if (mino.exists){
+                    exists = true;
+                    //break;
+                }
+        });
+        if (!exists){
+            this.spawnMino();
+        }
+        */
+        
+        this.activegroup.forEach(function(mino){
+            //check if mino is at left of grid
+            if (mino.left <= 0){
+                cleartomove = false;
+            }
+        });
+        
+        if (cleartomove){
+            //check if filled space is to the left 
+            var bottoms = [];
+            var lefts = [];
+            this.activegroup.forEach(function(mino){
+                bottoms.push(mino.bottom);
+                lefts.push(mino.left);
+            });
+            this.gridgroup.forEach(function(space){ //checks every space on grid
+                if (space.frame > 3){ //if space is not empty
+                    for (var i = 0; i<bottoms.length; i++){//checks every active mino
+                        if (bottoms[i] == space.bottom && lefts[i] == space.right){
+                            cleartomove = false;
+                        }
+                    }
+                }
+            });
+        }
+        if (!cleartomove){
+            //this.stopMino();
+        }else{
+            this.falltimer += 1;
+            this.activegroup.forEach(function(mino){
+                mino.x -= 40; //move by 1 space
+            });
+        }
+        
+        //this.activegroup.callAll('animations.play', 'animations', 'clear');
+    },
+    
+    //moves active minoes right
+    moveRight: function(){
+        
     },
     
     render: function(){
