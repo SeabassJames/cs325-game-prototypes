@@ -28,7 +28,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('titlePage', 'assets/Title.jpg');
 		this.load.image('instructions', 'assets/Instructions.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
-		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
+		this.load.audio('titleMusic', ['assets/music.mp3']);
 		this.load.image( 'bg', 'assets/bg.jpg' );
 		this.load.image( 'gameover', 'assets/GAMEOVER.png' );
 		this.load.spritesheet('minoes', 'assets/minoes.png', 40, 40);
