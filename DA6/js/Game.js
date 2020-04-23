@@ -90,7 +90,7 @@ BasicGame.Game.prototype = {
         this.gridgroup.y = -70;
         //gridgroup.filled = false;
         
-        //this.music = this.add.audio('ghostBusters');
+        this.music = this.add.audio('titleMusic');
         //this.sfx = this.add.audio('fart');
         this.music.play();
         this.music.loop = true;
