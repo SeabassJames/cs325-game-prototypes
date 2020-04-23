@@ -92,8 +92,8 @@ BasicGame.Game.prototype = {
         
         //this.music = this.add.audio('ghostBusters');
         //this.sfx = this.add.audio('fart');
-        //this.music.play();
-        //this.music.loop = true;
+        this.music.play();
+        this.music.loop = true;
         //this.text = this.game.add.text( 100, 15, "Score: " + this.score + "\nWasher time: " + parseInt(this.washerTime) + ":" + parseInt((this.washerTime - parseInt(this.washerTime)) * 60), this.style );
         
         //10x23 empty grid for minoes. 
